@@ -1,23 +1,26 @@
 //---------------------Mostar opções de cadastro/Lista--------------------------
 $(document).ready(function () {
 
-    $("#divCadastro").mouseenter(function () {
-        $("#dropCadastro").first().fadeIn("slow", "linear");
-    });
-    
-     $("#divLista").mouseenter(function () {
-        $("#dropLista").first().fadeIn("slow", "linear");
-    });
-    
-    $("#divCadastro").mouseleave(function () {
-        $("#dropCadastro").first().fadeOut()("slow", "linear");
-    });
-    
-     $("#divLista").mouseleave(function () {
-        $("#dropLista").first().fadeOut("slow", "linear");
-    });
+    $("#divCadastro").click(function () {
+        $("#dropCadastro").toggle();
 
+         var src = ($("#imgShow").attr('src') === '../img/add.png')
+            ? '../img/minus.png'
+            : '../img/add.png';
+         $("#imgShow").attr('src', src);
+    
+    });
+    
+     $("#divLista").click(function () {
+        $("#dropLista").toggle();
 
+         var src = ($("#imgShow1").attr('src') === '../img/add.png')
+            ? '../img/minus.png'
+            : '../img/add.png';
+         $("#imgShow1").attr('src', src);
+    
+    });
+   
 });
 //------------------------------------------------------------------------------        
 

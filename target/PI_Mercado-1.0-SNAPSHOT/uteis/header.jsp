@@ -20,9 +20,11 @@
 
         <div class="barraMenu">
             <div style="width:15%;height: 50px; float: left;" id="divCadastro" >
-                <h5 class="card-title">CADASTRAR</h5>
+                <h5 class="card-title"">CADASTRAR 
+                    <img id="imgShow" src="../img/add.png" style="visibility: visible">
+                </h5>
 
-                <div  id="dropCadastro" style="display: none;text-align:center" >     
+                <div  id="dropCadastro" style="display: none; text-align:center" >     
                     <a href="${pageContext.request.contextPath}/cliente/cadastro.jsp" class="btn btn-primary">Cliente</a><br/>
                     <a href="#" class="btn btn-primary">Produto</a><br/>
                     <a href="#" class="btn btn-primary">Funcionario</a>
@@ -30,7 +32,9 @@
             </div>
 
             <div style="width:13%;height: 50px; float: left;" id="divLista" >
-                <h5 class="card-title">LISTAR</h5>
+                <h5 class="card-title">LISTAR
+                    <img id="imgShow1" src="../img/add.png" style="visibility: visible">
+                </h5>
 
                 <div  id="dropLista" style="display: none; text-align:center">     
                     <a href="#" class="btn btn-primary">Cliente</a><br/>
@@ -48,7 +52,7 @@
             </div>
             <div class="container-fluid">
                 <form class="d-flex">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <input class="form-control me-2" id="txtBusca" type="search" placeholder="Search" aria-label="Search">
                     <button class="btn btn-outline-success" type="submit">Search</button>
                 </form>
             </div>
