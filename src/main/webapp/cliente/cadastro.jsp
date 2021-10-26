@@ -10,51 +10,41 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Cadastro de Clientes</title>
+        <style>
+            label{
+                font-weight: bolder; float: left; margin-right: 10px; width: 7%;
+            }
+        </style>
     </head>
     <body class="container">
-        
-    <c:import url="../uteis/header.jsp"/>
-    
-    <h1>Formulário de Cadastro</h1>
-    
-    <form action="CadastroClienteServlet" method="POST">
-        <c:if test="${not empty clienteAtualizacao}">
-            <input type="hidden" name="ope" value="1"/>
-        </c:if>
-        <div  class="form-group">
-            <label>Nome</label>
-            <input type="text" name="nomeCliente" value="${clienteAtualizacao.nome}"
-                   required class="form-control"/><br/> 
-        </div>
-        <div class="form-group">
-            <label>Email</label>
-            <input type="text" name="emailCliente" value="${clienteAtualizacao.email}"
-                   required class="form-control"/><br/>
-        </div>
-        <div class="form-group">
-            <label>CPF</label>
-            <c:if test="${empty clienteAtualizacao}">
-                <input type="text" name="cpfCliente"
-                       value="${clienteAtualizacao.cpf}" 
-                       required
-                       class="form-control"
-                       />
-            </c:if>
-            <c:if test="${not empty clienteAtualizacao}">
-                <label>${clienteAtualizacao.cpf}</label>
-                <input type="hidden" name="cpfCliente"
-                       value="${clienteAtualizacao.cpf}" 
-                       required
-                       class="form-control"
-                       />
-            </c:if>           
 
-        </div>
-        <br/>
+        <c:import url="../uteis/header.jsp"/>
 
 
-        <br/>
-        <button type="submit" class="btn btn-primary">Enviar</button>
-    </form>
-</body>
+        <fieldset style="width: 90%; margin: auto;">
+            <legend style="text-align: center;">Formulário de Cadastro</legend>
+
+            <form action="CadastroClienteServlet" method="POST">
+
+                <label >Nome:</label>
+                <input type="text" name="nomeCliente" class="form-control" style="width: 40%; float: left; margin-right: 2%;"/>
+
+                <label >CPF:</label>
+                <input type="text" name="cpfCliente" class="form-control" style="width: 35%" /><br/>
+
+                <label>Telefone:</label>
+                <input type="text" name="emailCliente" class="form-control" style="width: 35%;float: left; margin-right: 7%;"/>
+
+                <label>Sexo:</label>
+                <strong>M:<strong>
+                <input type="radio" name="sexo" id="rboMaculino">
+                
+                <strong>F:<strong>
+                <input type="radio" name="sexo" id="rboFeminino">
+                <br/> 
+
+                <br><button type="submit" class="btn btn-primary">Enviar</button>
+            </form>
+        </fieldset>
+    </body>
 </html>
