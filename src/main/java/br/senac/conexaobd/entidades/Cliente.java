@@ -18,12 +18,18 @@ public class Cliente {
 
     private String nome;
     private String email;
-    private String cpf;  
+    private String cpf;
+    private String sexo;
+    private String telefone;
+    private String enderecoLogradouro;
+    private int enderecoNumero;
+    private int codigo;
+    private String enderecoComplemento;
 
-    @Override
-    public String toString() {
-        return "nome=" + nome + ", email=" + email + ", cpf=" + cpf;
-    }
+//    @Override
+//    public String toString() {
+//        return "nome=" + nome + ", email=" + email + ", cpf=" + cpf;
+//    }
     
     
     

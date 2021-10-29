@@ -26,26 +26,45 @@ public class CadastroClienteServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String ope = request.getParameter("ope");
-         // Passo 1 - Recuperar os parametros
+        
+        // Passo 1 - Recuperar os parametros
         String nome = request.getParameter("nomeCliente");
         String email = request.getParameter("emailCliente");
         String cpf = request.getParameter("cpfCliente");
+        String telefone = request.getParameter("telefoneCliente");
+        String endereco = request.getParameter("endCliente");
+        int ederecoNumero = Integer.parseInt( request.getParameter("nEndCliente"));
+        String complemento = request.getParameter("compCliente"); 
+        String sexo = "M";
+
+        if (request.getParameter("sexo").equals("masculino")) {
+            sexo = "M";
+        }
+        if (request.getParameter("sexo").equals("feminino")) {
+            sexo = "F";
+        }
 
         // Passo 2 - Inserir no BD
         Cliente cliente = new Cliente();
+        
         cliente.setNome(nome);
         cliente.setCpf(cpf);
         cliente.setEmail(email);
+        cliente.setSexo(sexo);
+        cliente.setTelefone(telefone);
+        cliente.setEnderecoLogradouro(endereco);
+        cliente.setEnderecoNumero(ederecoNumero);
+        cliente.setEnderecoComplemento(complemento);
         try {
             // ope = 1 => Update
             if ("1".equals(ope)) {
-               ClienteDAO.atualizarCliente(cliente);
+                ClienteDAO.atualizarCliente(cliente);
             } else {
-               ClienteDAO.inserirCliente(cliente);
+                ClienteDAO.inserirCliente(cliente);
             }
-            response.sendRedirect(request.getContextPath()+"/uteis/sucesso.jsp");
-        } catch(SQLException ex) {
-           response.sendRedirect(request.getContextPath()+"/uteis/erro.jsp");
+            response.sendRedirect(request.getContextPath() + "/uteis/sucesso.jsp");
+        } catch (SQLException ex) {
+            response.sendRedirect(request.getContextPath() + "/uteis/erro.jsp");
         }
     }
 
@@ -62,12 +81,7 @@ public class CadastroClienteServlet extends HttpServlet {
             ClienteDAO.deletarCliente(cpf);
             resp.sendRedirect(req.getContextPath() + "/cliente/ListarClienteServlet");
         }
-        
-        
-    }
-    
-    
 
-    
+    }
 
 }

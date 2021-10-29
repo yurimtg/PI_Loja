@@ -37,7 +37,7 @@
                 </h5>
 
                 <div  id="dropLista" style="display: none; text-align:center">     
-                    <a href="#" class="btn btn-primary">Cliente</a><br/>
+                    <a href="${pageContext.request.contextPath}/cliente/ListarClienteServlet" class="btn btn-primary">Cliente</a><br/>
                     <a href="#" class="btn btn-primary">Produto</a><br/>
                     <a href="#" class="btn btn-primary">Funcionario</a>
                 </div>
