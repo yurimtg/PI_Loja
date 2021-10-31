@@ -19,7 +19,7 @@
     <body class="container">
 
         <div class="barraMenu">
-            <div style="width:15%;height: 50px; float: left;" id="divCadastro" >
+            <div style="width:20%;height: 50px; float: left;" id="divCadastro" >
                 <h5 class="card-title"">CADASTRAR 
                     <img id="imgShow" src="../img/add.png" style="visibility: visible">
                 </h5>
@@ -31,7 +31,7 @@
                 </div>
             </div>
 
-            <div style="width:13%;height: 50px; float: left;" id="divLista" >
+            <div style="width:15%;height: 50px; float: left;" id="divLista" >
                 <h5 class="card-title">LISTAR
                     <img id="imgShow1" src="../img/add.png" style="visibility: visible">
                 </h5>
@@ -43,18 +43,12 @@
                 </div>
             </div>
 
-            <div style="width:10%;height: 50px; float: left;" >   
+            <div style="width:15%;height: 50px; float: left;" >   
                 <h5><a href="${pageContext.request.contextPath}/venda/venda.jsp" style="">VENDA</a></h5><br/>
             </div>
 
             <div style="width:25%;height: 50px; float: left;" >
                 <h5> <a href="${pageContext.request.contextPath}/relatorio/relatorio.jsp">RELATÓRIO DE VENDA</a></h5><br/>
-            </div>
-            <div class="container-fluid">
-                <form class="d-flex">
-                    <input class="form-control me-2" id="txtBusca" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
             </div>
         </div>
 

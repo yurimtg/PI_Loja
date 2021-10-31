@@ -5,16 +5,15 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class Cliente {
 
+public class Funcionario {
+    
     private String nome;
     private String email;
     private String cpf;
     private String sexo;
     private String telefone;
-    private String enderecoLogradouro;
-    private int enderecoNumero;
-    private int codigo;
-    private String enderecoComplemento;
-    
+    private double salario;
+    private String cargo;
+    private int codigo;    
 }
