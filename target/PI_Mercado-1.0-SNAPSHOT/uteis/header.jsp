@@ -48,7 +48,7 @@
             </div>
 
             <div style="width:25%;height: 50px; float: left;" >
-                <h5> <a href="#">RELATÓRIO DE VENDA</a></h5><br/>
+                <h5> <a href="${pageContext.request.contextPath}/relatorio/relatorio.jsp">RELATÓRIO DE VENDA</a></h5><br/>
             </div>
             <div class="container-fluid">
                 <form class="d-flex">

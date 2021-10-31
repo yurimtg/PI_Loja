@@ -40,13 +40,13 @@
                 </c:if>
 
                 <label >Nome:</label>
-                <input type="text" name="nomeCliente" class="form-control" style="width: 40%; float: left; margin-right: 2%;" value="${clienteAtualizacao.nome}"/>
+                <input required type="text" name="nomeCliente" class="form-control" style="width: 40%; float: left; margin-right: 2%;" value="${clienteAtualizacao.nome}"/>
 
                 <label >CPF:</label>
-                <input type="text" name="cpfCliente" class="form-control" style="width: 35%" value="${clienteAtualizacao.cpf}" /><br/>
+                <input required type="text" name="cpfCliente" class="form-control" style="width: 35%" value="${clienteAtualizacao.cpf}" /><br/>
 
                 <label>Email:</label>
-                <input type="text" name="emailCliente" class="form-control" style="width: 40%; float: left; margin-right: 2%;" value="${clienteAtualizacao.email}"/>
+                <input required type="text" name="emailCliente" class="form-control" style="width: 40%; float: left; margin-right: 2%;" value="${clienteAtualizacao.email}"/>
 
                 <label>Telefone:</label>
                 <input type="text" name="telefoneCliente" class="form-control" style="width: 35%;float: left; margin-right: 2%;" value="${clienteAtualizacao.telefone}"/>

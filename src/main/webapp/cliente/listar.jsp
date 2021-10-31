@@ -12,37 +12,24 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Listar de Clientes</title>
         <script type="text/javascript">
+            
             var cpfRemocao;
             function confirmarRemocao(nome, cpf) {
-                console.log("Confirmar exclusao ", nome, cpf);
                 cpfRemocao = cpf;
-                var paragrafoCliente = $("#campoTextoExclusao");
-                paragrafoCliente.html(nome + " - " + cpf);
-                
-                var modalConfirmacao = $("#modalExclusao");
-                modalConfirmacao.show();
-            }
-            
-            function fecharModal() {
-                var modalConfirmacao = $("#modalExclusao");
-                modalConfirmacao.hide();
+                var confirmar = confirm("Deseja escluir o cliente: "+nome+ " do CPF: "+cpf);
+                if(confirmar){
+                    deletar();
+                }
             }
 
             function deletar() {
-                console.log("Excluindo cliente ", cpfRemocao);
-                fecharModal();
                 var url = "CadastroClienteServlet?cpfUsuario=" + cpfRemocao;
                 $.ajax(url).done(function () {
-                    console.log("Cliente removido!");
-                    var alerta = $("#alerta");
-                    alerta.css("display", "block");
-                    setTimeout(function(){
-                         alerta.css("display", "none");
-                         location.reload();
-                    }, 1000)
+                    alert("Sucesso");
+                    location.reload();
                 }).fail(function () {
-                    console.log("Erro ao remover o cliente!");
-                })
+                    alert("Falha");
+                });
             }
 
         </script>
