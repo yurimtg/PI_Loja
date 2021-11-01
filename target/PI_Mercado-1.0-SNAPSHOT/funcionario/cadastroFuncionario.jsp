@@ -35,7 +35,7 @@
             <form action="CadastroFuncionarioServlet" method="POST" class="card-title"> 
 
                 <c:if test="${not empty funcionarioAtualizacao}">
-                    <input type="hidden" name="ope" value="1"/>
+                    <input type="hidden" name="ope" value="1"/>    
                 </c:if>
 
                 <label >Nome:</label>
