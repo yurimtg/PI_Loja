@@ -3,7 +3,7 @@
     Created on : 31/10/2021, 00:14:41
     Author     : yurim
 --%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -22,7 +22,7 @@
             }
 
             function deletar() {
-                var url = "CadastroClienteServlet?cpfUsuario=" + cpfRemocao;
+                var url = "CadastroFuncionarioServlet?cpfUsuario=" + cpfRemocao;
                 $.ajax(url).done(function () {
                     alert("Sucesso");
                     location.reload();
@@ -40,7 +40,7 @@
             <td>CPF</td><td>Nome</td><td>Email</td><td>Telefone</td><td>Salario</td><td>Cargo</td>
         </thead>
         <tbody>
-            <c:forEach var="cliente" items="${listaFuncionario}">
+            <c:forEach var="funcionario" items="${listaFuncionario}">
                 <tr>
                     <td>${funcionario.cpf}</td>
                     <td>${funcionario.nome}</td>

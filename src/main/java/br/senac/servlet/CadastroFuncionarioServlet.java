@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.senac.conexaobd.servlet;
+package br.senac.servlet;
 
-import br.senac.conexaobd.dao.ClienteDAO;
+import br.senac.conexaobd.dao.FuncionarioDAO;
 import br.senac.conexaobd.entidades.Funcionario;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -20,8 +20,10 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class CadastroFuncionarioServlet extends HttpServlet {
 
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+   @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
       String ope = request.getParameter("ope");
         
         // Passo 1 - Recuperar os parametros
@@ -31,12 +33,11 @@ public class CadastroFuncionarioServlet extends HttpServlet {
         String telefone = request.getParameter("telefoneFuincionario");
         Double salario = Double.parseDouble(request.getParameter("salarioFuincionario"));
         String cargo =  request.getParameter("cargoFuincionario");
-        String sexo = "M";
+        String sexo = "";
 
         if (request.getParameter("sexo").equals("masculino")) {
             sexo = "M";
-        }
-        if (request.getParameter("sexo").equals("feminino")) {
+        }else{
             sexo = "F";
         }
 
@@ -54,9 +55,10 @@ public class CadastroFuncionarioServlet extends HttpServlet {
         try {
             // ope = 1 => Update
             if ("1".equals(ope)) {
-                ClienteDAO.atualizarCliente(funcionario);
+                FuncionarioDAO.atualizarFuncioanario(funcionario);
             } else {
-                ClienteDAO.inserirCliente(funcionario);
+                
+                FuncionarioDAO.inserirFuncionario(funcionario);
             }
             response.sendRedirect(request.getContextPath() + "/uteis/sucesso.jsp");
         } catch (SQLException ex) {
@@ -70,12 +72,12 @@ public class CadastroFuncionarioServlet extends HttpServlet {
         String ope = req.getParameter("ope");
         //OPE = 1 => Atualização
         if ("1".equals(ope)) {
-            Cliente cliente = ClienteDAO.getClientePorCPF(cpf);
-            req.setAttribute("clienteAtualizacao", cliente);
-            req.getRequestDispatcher("/cliente/cadastro.jsp").forward(req, resp);
+            Funcionario funcionario = FuncionarioDAO.getFuncionarioPorCPF(cpf);
+            req.setAttribute("funcionarioAtualizacao", funcionario);
+            req.getRequestDispatcher("/funcionario/cadastroFuncionario.jsp").forward(req, resp);
         } else {
-            ClienteDAO.deletarCliente(cpf);
-            resp.sendRedirect(req.getContextPath() + "/cliente/ListarClienteServlet");
+            FuncionarioDAO.deletarFuncionario(cpf);
+            resp.sendRedirect(req.getContextPath() + "/funcionario/ListarFuncionarioServlet");
         }
 
     }

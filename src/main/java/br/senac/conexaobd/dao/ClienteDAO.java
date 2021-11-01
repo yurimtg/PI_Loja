@@ -134,13 +134,18 @@ public class ClienteDAO {
 
     public static boolean atualizarCliente(Cliente cliente) {
         boolean ok = true;
-        String query = "update cliente set nome=?,email=? where cpf=?";
+        String query = "update cliente set nome=?,email=?,telefone=?,sexo=?,enderecoLogradouro=?,enderecoNumero=?,enderecoComplemento=? where cpf=?";
         Connection con = Conexao.getConexao();
         try {
             PreparedStatement ps = con.prepareStatement(query);
             ps.setString(1, cliente.getNome());
             ps.setString(2, cliente.getEmail());
-            ps.setString(3, cliente.getCpf());
+            ps.setString(3, cliente.getTelefone());
+            ps.setString(4, cliente.getSexo());
+            ps.setString(5, cliente.getEnderecoLogradouro());     
+            ps.setInt(6, cliente.getEnderecoNumero());
+            ps.setString(7, cliente.getEnderecoComplemento());          
+            ps.setString(8, cliente.getCpf());
             ps.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);

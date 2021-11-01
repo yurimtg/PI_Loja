@@ -3,7 +3,7 @@
     Created on : 31/10/2021, 00:14:26
     Author     : yurim
 --%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -26,9 +26,8 @@
         </style>
     </head>
     <body class="container" style="background-color: #f2f2f2;">
-
+        
         <c:import url="../uteis/header.jsp"/>
-
 
         <fieldset style="background-color: white; width: 90%; margin: auto; border: solid 1px; padding: 3%; border-radius: 50px; margin-top: 30px;">
             <h3 style="text-align: center; margin-bottom: 30px;"> CADASTRO FUNCIONARIO</h3>
@@ -43,7 +42,7 @@
                 <input required type="text" name="nomeFuincionario" class="form-control" style="width: 40%; float: left; margin-right: 2%;" value="${funcionarioAtualizacao.nome}"/>
 
                 <label >CPF:</label>
-                <input required type="text" name="cpfFuincionario" class="form-control" style="width: 35%" value="${clienteAtualizacao.cpf}" /><br/>
+                <input required type="text" name="cpfFuincionario" class="form-control" style="width: 35%" value="${funcionarioAtualizacao.cpf}" /><br/>
 
                 <label>Email:</label>
                 <input required type="text" name="emailFuincionario" class="form-control" style="width: 40%; float: left; margin-right: 2%;" value="${funcionarioAtualizacao.email}"/>

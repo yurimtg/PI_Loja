@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.senac.conexaobd.servlet;
+package br.senac.servlet;
 
 import br.senac.conexaobd.dao.ClienteDAO;
 import br.senac.conexaobd.entidades.Cliente;
@@ -35,12 +35,11 @@ public class CadastroClienteServlet extends HttpServlet {
         String endereco = request.getParameter("endCliente");
         int ederecoNumero = Integer.parseInt( request.getParameter("nEndCliente"));
         String complemento = request.getParameter("compCliente"); 
-        String sexo = "M";
+        String sexo = "";
 
         if (request.getParameter("sexo").equals("masculino")) {
             sexo = "M";
-        }
-        if (request.getParameter("sexo").equals("feminino")) {
+        }else{
             sexo = "F";
         }
 
@@ -55,6 +54,7 @@ public class CadastroClienteServlet extends HttpServlet {
         cliente.setEnderecoLogradouro(endereco);
         cliente.setEnderecoNumero(ederecoNumero);
         cliente.setEnderecoComplemento(complemento);
+        
         try {
             // ope = 1 => Update
             if ("1".equals(ope)) {

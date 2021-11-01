@@ -27,7 +27,7 @@
                 <div  id="dropCadastro" style="display: none; text-align:center" >     
                     <a href="${pageContext.request.contextPath}/cliente/cadastro.jsp" class="btn btn-primary">Cliente</a><br/>
                     <a href="#" class="btn btn-primary">Produto</a><br/>
-                    <a href="#" class="btn btn-primary">Funcionario</a>
+                    <a href="${pageContext.request.contextPath}/funcionario/cadastroFuncionario.jsp" class="btn btn-primary">Funcionario</a>
                 </div>
             </div>
 
@@ -39,7 +39,7 @@
                 <div  id="dropLista" style="display: none; text-align:center">     
                     <a href="${pageContext.request.contextPath}/cliente/ListarClienteServlet" class="btn btn-primary">Cliente</a><br/>
                     <a href="#" class="btn btn-primary">Produto</a><br/>
-                    <a href="#" class="btn btn-primary">Funcionario</a>
+                    <a href="${pageContext.request.contextPath}/funcionario/ListarFuncionarioServlet" class="btn btn-primary">Funcionario</a>
                 </div>
             </div>
 
