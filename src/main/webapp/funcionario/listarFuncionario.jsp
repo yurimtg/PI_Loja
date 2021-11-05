@@ -35,7 +35,7 @@
     </head>
     <body class="container">
         <c:import url="../uteis/header.jsp"/>
-        <table  class="table">
+        <table  class="table table-striped" style="width: 90%; margin: auto">
             <thead>
             <td>CPF</td><td>Nome</td><td>Email</td><td>Telefone</td><td>Salario</td><td>Cargo</td>
         </thead>
@@ -48,7 +48,7 @@
                     <td>${funcionario.telefone }</td>
                     <td>${funcionario.salario}</td>
                     <td>${funcionario.cargo}</td>
-                    <td><a href="CadastroFuncionarioServlet?cpfUsuario=${funcionario.cpf}&ope=1">Atualizar </a></td>
+                    <td><a class="btn btn-link" href="CadastroFuncionarioServlet?cpfUsuario=${funcionario.cpf}&ope=1">Atualizar </a></td>
                     <td><button onclick="confirmarRemocao('${funcionario.nome}', '${funcionario.cpf}')" class="btn btn-link">Deletar</button></td>
                 </tr>
             </c:forEach>

@@ -26,8 +26,10 @@ public class CadastroProdutoServlet extends HttpServlet {
         Double valor = Double.parseDouble(request.getParameter("valorProduto"));
         int estoque = Integer.parseInt(request.getParameter("estoqueProduto"));
         int tamanho = Integer.parseInt(request.getParameter("tamanhoProduto"));
-        int cod = Integer.parseInt(request.getParameter("codProduto"));
-        String genero = "";
+        int cod = 0;
+        if(request.getParameter("codProduto") != null){cod = Integer.parseInt(request.getParameter("codProduto"));}
+       
+        String genero;
 
         if (request.getParameter("genero").equals("masculino")) {
             genero = "M";
