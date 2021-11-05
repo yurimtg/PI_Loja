@@ -48,8 +48,7 @@
                     <label>Email:</label>
                     <input required type="text" name="emailFuncionario" class="form-control" style="width: 40%; float: left; margin-right: 2%;" value="${funcionarioAtualizacao.email}"/>
                     <span class="error"></span>
-                </div>="text" name="emailFuincionario" class="form-control" style="width: 40%; float: left; margin-right: 2%;" value="${funcionarioAtualizacao.email}"/>
-
+                </div>
                 <label>Telefone:</label>
                 <input type="text" name="telefoneFuincionario" class="form-control" style="width: 35%;float: left; margin-right: 2%;" value="${funcionarioAtualizacao.telefone}"/>
                 <br/>

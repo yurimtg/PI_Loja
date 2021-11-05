@@ -20,13 +20,9 @@ public class ListarClienteServlet extends HttpServlet {
         
         List<Cliente> clientes = ClienteDAO.getClientes();
         request.setAttribute("listaClientes", clientes);
-        
-        // RequestDispatcher reaproveita os objetos Request e Response
+
         String url = "/cliente/listar.jsp";
-        request.getRequestDispatcher(url).forward(request, response);
-        
-        //sendRedirect sempre cria um novo request/response
-        //response.sendRedirect("listar.jsp");
+        request.getRequestDispatcher(url).forward(request, response);       
     }
   
 }

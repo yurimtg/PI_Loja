@@ -9,10 +9,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- *
- * @author yurim
- */
 public class CadastroProdutoServlet extends HttpServlet {
   @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -37,7 +33,6 @@ public class CadastroProdutoServlet extends HttpServlet {
             genero = "F";
         }
 
-        // Passo 2 - Inserir no BD
        Produto produto = new Produto();
         
         produto.setModelo(modelo);
@@ -49,7 +44,7 @@ public class CadastroProdutoServlet extends HttpServlet {
         produto.setCodProduto(cod);
 
         try {
-            // ope = 1 => Update
+
             if ("1".equals(ope)) {
                 produtoDAO.atualizarProduto(produto);
             } else {
@@ -66,7 +61,7 @@ public class CadastroProdutoServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         int cod = Integer.parseInt(req.getParameter("codigoProduto"));
         String ope = req.getParameter("ope");
-        //OPE = 1 => Atualização
+
         if ("1".equals(ope)) {
             Produto produto = produtoDAO.getProdutoPorCod(cod);
             req.setAttribute("produtoAtualizacao", produto);

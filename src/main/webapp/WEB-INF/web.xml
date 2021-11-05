@@ -28,6 +28,10 @@
         <servlet-name>ListarProdutoServlet</servlet-name>
         <servlet-class>br.senac.servlet.ListarProdutoServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>VendaServlet</servlet-name>
+        <servlet-class>br.senac.servlet.VendaServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CadastroClienteServlet</servlet-name>
         <url-pattern>/cliente/CadastroClienteServlet</url-pattern>
@@ -51,6 +55,10 @@
     <servlet-mapping>
         <servlet-name>ListarProdutoServlet</servlet-name>
         <url-pattern>/produto/ListarProdutoServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>VendaServlet</servlet-name>
+        <url-pattern>/venda/VendaServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

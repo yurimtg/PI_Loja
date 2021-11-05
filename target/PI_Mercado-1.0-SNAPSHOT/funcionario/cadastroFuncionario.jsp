@@ -44,9 +44,11 @@
                 <label >CPF:</label>
                 <input required type="text" name="cpfFuincionario" class="form-control" style="width: 35%" value="${funcionarioAtualizacao.cpf}" /><br/>
 
-                <label>Email:</label>
-                <input required type="text" name="emailFuincionario" class="form-control" style="width: 40%; float: left; margin-right: 2%;" value="${funcionarioAtualizacao.email}"/>
-
+                <div class="input">
+                    <label>Email:</label>
+                    <input required type="text" name="emailFuncionario" class="form-control" style="width: 40%; float: left; margin-right: 2%;" value="${funcionarioAtualizacao.email}"/>
+                    <span class="error"></span>
+                </div>
                 <label>Telefone:</label>
                 <input type="text" name="telefoneFuincionario" class="form-control" style="width: 35%;float: left; margin-right: 2%;" value="${funcionarioAtualizacao.telefone}"/>
                 <br/>

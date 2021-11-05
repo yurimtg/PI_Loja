@@ -17,21 +17,28 @@
         <script type="text/javascript">
 
             $(document).ready(function () {
-
-                $(':button').click(function () {
+//-------------------------------------------------------------------------------------------------------------------
+                $('.btnADD').click(function () {
 
                     var row = $(this).closest("tr");
+                    var qtd = row.find("td:eq(6)").text();
+                    var estoque = row.find("td:eq(4)");
+                    var estoqueAtual = estoque.text() - qtd;
+                    if (qtd <= 0) {
+                        alert("Informe a quantidade");
+                        return;
+                    }
+                    if (estoqueAtual < 0) {
+                        alert("Estoque insuficiente");
+                        return;
+                    }
                     var codigo = row.find("td:eq(0)").text();
                     var modelo = row.find("td:eq(2)").text();
                     var valor = row.find("td:eq(3)").text();
-                    var qtd = row.find("td:eq(6)").text();
-                    var estoque = row.find("td:eq(4)");
-                    estoque.html(estoque.text() - qtd);
-
-                    var tr = '<tr><td>' + codigo + '</td><td>' + modelo + '</td><td>' + valor + '</td><td>' + qtd + '</td><td>' + qtd * valor + '</td></tr>';
+                    estoque.html(estoqueAtual);
+                    var tr = '<tr><td class="td_codigo">' + codigo + '</td><td class="td_modelo">' + modelo + '</td><td class="td_valor">' + valor + '</td><td class="td_quantidade">' + qtd + '</td><td class="td_total">' + qtd * valor + '</td></tr>';
                     $('#tblCarrinho tbody').append(tr);
                 });
-
                 $('.qtd').dblclick(function () {
 
                     var vInicial = $(this).text();
@@ -39,14 +46,36 @@
                     $(this).html(input.blur(function () {
                         var novoConteudo = $(this).val();
                         $(this).parent().html(novoConteudo);
-
                     }));
+                });
+//-------------------------------------------------------------------------------------------------------------------
+                $('#btnCompra').click(function () {
+
+
+                    for (i = 0; i < $('.td_codigo').length; i++) {
+                        var codigo = $('.td_codigo')[i].firstChild.nodeValue;
+                        var modelo = $('.td_modelo')[i].firstChild.nodeValue;
+                        var valor = $('.td_valor')[i].firstChild.nodeValue;
+                        var qtd = $('.td_quantidade')[i].firstChild.nodeValue;
+                        var total = $('.td_total')[i].firstChild.nodeValue;
+                        
+//                      var url = "VendaServlet?codigo="+codigo+"&modelo="+modelo+"&valor="+valor+"&qtd="+qtd+"&total="+total;
+//   
+//                     $('#btnCompra').prop("href", url);
+         
+//                        $.ajax(url).done(function () {
+//                            alert("Sucesso");
+//                            location.reload();
+//                        }).fail(function () {
+//                            alert("Falha");
+//                        });
+                    }
 
                 });
-
             });
 
         </script>       
+        <h2 style="margin-top: 20px; text-align: center">ITENS VENDA</h2>
 
         <table id="tblVenda" name="venda" class="table table-striped" style="width: 90%; margin: auto">
             <thead>
@@ -62,13 +91,13 @@
                     <td>${produto.estoque}</td>
                     <td>${produto.tamanho}</td>
                     <td class="qtd">00</td>    
-                    <td><button  class="btn-outline-dark">Adicionar</button></td> 
+                    <td><button  class="btnADD">Adicionar</button></td> 
                 </tr>
             </c:forEach>
         </tbody>
     </table>
 
-    <h2 style="margin-top: 20px; text-align: center">CARRINHO</h2>
+    <h2 style="margin-top: 100px; text-align: center">CARRINHO</h2>
     <table id="tblCarrinho" class="table table-striped" style="width: 90%; margin: auto;">
         <thead>
             <tr>
@@ -82,5 +111,8 @@
         <tbody>
         </tbody>
     </table>
+    <div style="text-align: center; margin-top: 50px;" >
+        <button id="btnCompra">COMPRAR</button> 
+    </div>        
 </body>
 </html>

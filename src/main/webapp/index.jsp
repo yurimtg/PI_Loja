@@ -15,7 +15,7 @@
 
 <body class="container">
     
-    <a href="venda/venda.jsp">logar</a>
+    <a href="${pageContext.request.contextPath}/produto/ListarProdutoServlet?venda=1">logar</a>
 
 </body>
 

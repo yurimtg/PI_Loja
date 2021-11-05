@@ -45,8 +45,12 @@
                 <label >CPF:</label>
                 <input required type="text" name="cpfCliente" class="form-control" style="width: 35%" value="${clienteAtualizacao.cpf}" /><br/>
 
-                <label>Email:</label>
-                <input required type="text" name="emailCliente" class="form-control" style="width: 40%; float: left; margin-right: 2%;" value="${clienteAtualizacao.email}"/>
+                <div class="input">
+                        <label>Email</label>
+                        <input required type="email"name="emailCliente" class="form-control" style="width: 35%" value="${clienteAtualizacao.email}" /><br/>
+
+                        <span class="error"></span>
+                    </div>
 
                 <label>Telefone:</label>
                 <input type="text" name="telefoneCliente" class="form-control" style="width: 35%;float: left; margin-right: 2%;" value="${clienteAtualizacao.telefone}"/>

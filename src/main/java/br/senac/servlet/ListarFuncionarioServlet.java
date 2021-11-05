@@ -19,11 +19,9 @@ public class ListarFuncionarioServlet extends HttpServlet {
          List<Funcionario> funcionario = FuncionarioDAO.getFuncionario();
         request.setAttribute("listaFuncionario", funcionario);
 
-        // RequestDispatcher reaproveita os objetos Request e Response
+      
         String url = "/funcionario/listarFuncionario.jsp";
         request.getRequestDispatcher(url).forward(request, response);
-        
-        //sendRedirect sempre cria um novo request/response
-        //response.sendRedirect("listar.jsp");
+
     }
 }

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.senac.servlet;
 
 import br.senac.conexaobd.dao.FuncionarioDAO;
@@ -14,10 +9,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- *
- * @author yurim
- */
 public class CadastroFuncionarioServlet extends HttpServlet {
 
    @Override
@@ -26,7 +17,6 @@ public class CadastroFuncionarioServlet extends HttpServlet {
         
       String ope = request.getParameter("ope");
         
-        // Passo 1 - Recuperar os parametros
         String nome = request.getParameter("nomeFuincionario");
         String email = request.getParameter("emailFuincionario");
         String cpf = request.getParameter("cpfFuincionario");
@@ -41,7 +31,6 @@ public class CadastroFuncionarioServlet extends HttpServlet {
             sexo = "F";
         }
 
-        // Passo 2 - Inserir no BD
        Funcionario funcionario = new Funcionario();
         
         funcionario.setNome(nome);
@@ -53,7 +42,6 @@ public class CadastroFuncionarioServlet extends HttpServlet {
         funcionario.setCargo(cargo);
 
         try {
-            // ope = 1 => Update
             if ("1".equals(ope)) {
                 FuncionarioDAO.atualizarFuncioanario(funcionario);
             } else {
@@ -70,7 +58,6 @@ public class CadastroFuncionarioServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String cpf = req.getParameter("cpfUsuario");
         String ope = req.getParameter("ope");
-        //OPE = 1 => Atualização
         if ("1".equals(ope)) {
             Funcionario funcionario = FuncionarioDAO.getFuncionarioPorCPF(cpf);
             req.setAttribute("funcionarioAtualizacao", funcionario);
