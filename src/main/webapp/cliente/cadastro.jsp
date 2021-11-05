@@ -30,7 +30,7 @@
         <c:import url="../uteis/header.jsp"/>
 
 
-        <fieldset style="background-color: white; width: 90%; margin: auto; border: solid 1px; padding: 3%; border-radius: 50px; margin-top: 30px;">
+        <fieldset style="background-color: white; width: 90%; margin: auto; border: none; padding: 3%; border-radius: 20px; margin-top: 30px;">
             <h3 style="text-align: center; margin-bottom: 30px;"> CADASTRO CLIENTE</h3>
 
             <form action="CadastroClienteServlet" method="POST" class="card-title"> 

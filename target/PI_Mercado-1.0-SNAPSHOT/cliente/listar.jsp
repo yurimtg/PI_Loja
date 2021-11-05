@@ -36,7 +36,7 @@
     </head>
     <body class="container">
         <c:import url="../uteis/header.jsp"/>
-        <table  class="table">
+        <table  class="table table-striped" style="width: 90%; margin: auto">
             <thead>
             <td>CPF</td><td>Nome</td><td>Email</td><td>Telefone</td><td>Endereço</td><td>Nº</td><td>sexo</td>
         </thead>
@@ -50,7 +50,7 @@
                     <td>${cliente.enderecoLogradouro}</td>
                     <td>${cliente.enderecoNumero}</td>
                     <td>${cliente.sexo }</td>
-                    <td><a href="CadastroClienteServlet?cpfUsuario=${cliente.cpf}&ope=1">Atualizar </a></td>
+                    <td><a class="btn btn-link" href="CadastroClienteServlet?cpfUsuario=${cliente.cpf}&ope=1">Atualizar </a></td>
                     <td><button onclick="confirmarRemocao('${cliente.nome}', '${cliente.cpf}')" class="btn btn-link">Deletar</button></td>
                 </tr>
             </c:forEach>

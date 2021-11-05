@@ -35,7 +35,7 @@
     </head>
     <body class="container">
         <c:import url="../uteis/header.jsp"/>
-        <table  class="table">
+        <table  class="table table-striped" style="width: 90%; margin: auto">
             <thead>
             <td>Código</td><td>Marca</td><td>Modelo</td><td>Valor</td><td>Estoque</td><td>Tamanho</td>
         </thead>
@@ -48,7 +48,7 @@
                     <td>${produto.valor }</td>
                     <td>${produto.estoque}</td>
                     <td>${produto.tamanho}</td>
-                    <td><a href="CadastroProdutoServlet?codigoProduto=${produto.codProduto}&ope=1">Atualizar </a></td>
+                    <td><a class="btn btn-link" href="CadastroProdutoServlet?codigoProduto=${produto.codProduto}&ope=1">Atualizar </a></td>
                     <td><button onclick="confirmarRemocao('${produto.modelo}', '${produto.codProduto}')" class="btn btn-link">Deletar</button></td>
                 </tr>
             </c:forEach>

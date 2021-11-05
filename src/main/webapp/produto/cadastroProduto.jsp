@@ -29,16 +29,17 @@
         
         <c:import url="../uteis/header.jsp"/>
 
-        <fieldset style="background-color: white; width: 90%; margin: auto; border: solid 1px; padding: 3%; border-radius: 50px; margin-top: 30px;">
+        <fieldset style="background-color: white; width: 90%; margin: auto; border: none; padding: 3%; border-radius: 20px; margin-top: 30px;">
             <h3 style="text-align: center; margin-bottom: 30px;"> CADASTRO PRODUTO</h3>
 
             <form action="CadastroProdutoServlet" method="POST" class="card-title"> 
 
                 <c:if test="${not empty produtoAtualizacao}">
-                    <input type="hidden" name="ope" value="1"/>                     
+                    <input type="hidden" name="ope" value="1"/>      
+                    <input type="hidden" name="codProduto" value="${produtoAtualizacao.codProduto}"/>  
                 </c:if>
                     
-                <input type="hidden" name="codProduto" value="${produtoAtualizacao.codProduto}"/>  
+               
                 
                 <label >Marca:</label>
                 <input required type="text" name="marcaProduto" class="form-control" style="width: 40%; float: left; margin-right: 2%;" value="${produtoAtualizacao.marca}"/>
