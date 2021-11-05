@@ -140,5 +140,35 @@ public class FuncionarioDAO {
         }
         return ok;
     }
-    
+     public static Funcionario getUsuario(String login) throws SQLException {
+
+        Funcionario funcionario = null;
+        try {
+            Connection con = Conexao.getConexao();
+            String query = "select * from funcionarios where login =?";
+            PreparedStatement ps = con.prepareStatement(query);
+            ps.setString(1, login);
+
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+
+                String nome = rs.getString("nome");
+                String cargo = rs.getString("cargo");
+
+                funcionario = new Funcionario();
+
+                funcionario.setNome(nome);
+                funcionario.setLogin(login);
+                funcionario.setCargo(cargo);
+
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(FuncionarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return funcionario;
 }
+}
+
+    
+
