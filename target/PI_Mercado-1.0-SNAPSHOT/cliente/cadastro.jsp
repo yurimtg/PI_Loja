@@ -40,20 +40,20 @@
                 </c:if>
 
                 <label >Nome:</label>
-                <input required type="text" name="nomeCliente" class="form-control" style="width: 40%; float: left; margin-right: 2%;" value="${clienteAtualizacao.nome}"/>
+                <input required type="text" name="nomeCliente" class="form-control" placeholder="Digite o seu nome..." style="width: 40%; float: left; margin-right: 2%;" value="${clienteAtualizacao.nome}"/>
 
                 <label >CPF:</label>
-                <input required type="text" name="cpfCliente" class="form-control" style="width: 35%" value="${clienteAtualizacao.cpf}" /><br/>
+                <input required type="text" name="cpfCliente" class="form-control" placeholder="999.999.999-99" style="width: 35%" value="${clienteAtualizacao.cpf}" /><br/>
 
                 <div class="input">
                         <label>Email</label>
-                        <input required type="email"name="emailCliente" class="form-control" style="width: 35%" value="${clienteAtualizacao.email}" /><br/>
+                        <input required type="email"name="emailCliente" class="form-control" placeholder="seuemail@email.com" style="width: 35%" value="${clienteAtualizacao.email}" /><br/>
 
                         <span class="error"></span>
                     </div>
 
                 <label>Telefone:</label>
-                <input type="text" name="telefoneCliente" class="form-control" style="width: 35%;float: left; margin-right: 2%;" value="${clienteAtualizacao.telefone}"/>
+                <input type="text" name="telefoneCliente" class="form-control" placeholder="(99)99999-9999" style="width: 35%;float: left; margin-right: 2%;" value="${clienteAtualizacao.telefone}"/>
                 <br/>
                 <div style="margin-top: 40px;">
                     <label>Sexo:</label>
@@ -64,13 +64,13 @@
                 </div>      <br/>
 
                 <label >Endereço:</label>
-                <input type="text" name="endCliente" class="form-control" style="width: 40%; float: left; margin-right: 2%;" value="${clienteAtualizacao.enderecoLogradouro}"/>
+                <input type="text" name="endCliente" class="form-control" placeholder="Rua, Avenida ou Estrada" style="width: 40%; float: left; margin-right: 2%;" value="${clienteAtualizacao.enderecoLogradouro}"/>
 
                 <label >Nº:</label> 
-                <input type="text" name="nEndCliente" class="form-control" style="width: 10%"value="${clienteAtualizacao.enderecoNumero}" /><br/>
+                <input type="text" name="nEndCliente" class="form-control" placeholder="Nº99" style="width: 10%"value="${clienteAtualizacao.enderecoNumero}" /><br/>
 
                 <label style="width: 12%;">Complemento:</label>
-                <input type="text" name="compCliente" class="form-control" style="width: 55%; float: left;" value="${clienteAtualizacao.enderecoComplemento}"/>
+                <input type="text" name="compCliente" class="form-control" placeholder="Casa, Apartamento, etc." style="width: 55%; float: left;" value="${clienteAtualizacao.enderecoComplemento}"/>
 
 
                 <button type="submit" id="btnEnviar">Enviar</button>
