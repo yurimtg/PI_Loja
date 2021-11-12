@@ -10,21 +10,18 @@ import javax.servlet.http.HttpServletResponse;
 
 public class VendaServlet extends HttpServlet {
 
-     @Override
+    @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        
-        String cpf = req.getParameter("codigo");
-        String modelo = req.getParameter("modelo");
-        String valor = req.getParameter("valor");
-        String qtd = req.getParameter("qtd");
-        String total = req.getParameter("total");
-        
-        
+
+        String vCod[] = req.getParameter("codigo").split(",");
+        String vModelo[] = req.getParameter("modelo").split(",");
+        String vValor[] = req.getParameter("valor").split(",");
+        String vQtd[] = req.getParameter("qtd").split(",");
+        String vTotal[] = req.getParameter("total").split(",");
+
 //            Cliente cliente = ClienteDAO.getClientePorCPF(cpf);
 //            req.setAttribute("clienteAtualizacao", cliente);
 //            req.getRequestDispatcher("/cliente/cadastro.jsp").forward(req, resp);
-
-        }
-
     }
 
+}

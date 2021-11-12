@@ -51,26 +51,30 @@
 //-------------------------------------------------------------------------------------------------------------------
                 $('#btnCompra').click(function () {
 
+                    var codigo="";
+                    var modelo="";
+                    var valor="";
+                    var qtd="";
+                    var total="";
 
                     for (i = 0; i < $('.td_codigo').length; i++) {
-                        var codigo = $('.td_codigo')[i].firstChild.nodeValue;
-                        var modelo = $('.td_modelo')[i].firstChild.nodeValue;
-                        var valor = $('.td_valor')[i].firstChild.nodeValue;
-                        var qtd = $('.td_quantidade')[i].firstChild.nodeValue;
-                        var total = $('.td_total')[i].firstChild.nodeValue;
-                        
-//                      var url = "VendaServlet?codigo="+codigo+"&modelo="+modelo+"&valor="+valor+"&qtd="+qtd+"&total="+total;
-//   
-//                     $('#btnCompra').prop("href", url);
-         
-//                        $.ajax(url).done(function () {
-//                            alert("Sucesso");
-//                            location.reload();
-//                        }).fail(function () {
-//                            alert("Falha");
-//                        });
-                    }
+                        codigo += $('.td_codigo')[i].firstChild.nodeValue + ",";
+                        modelo += $('.td_modelo')[i].firstChild.nodeValue + ",";
+                        valor += $('.td_valor')[i].firstChild.nodeValue + ",";
+                        qtd += $('.td_quantidade')[i].firstChild.nodeValue + ",";
+                        total += $('.td_total')[i].firstChild.nodeValue + ",";
 
+                    }
+                    
+                    var url = "${pageContext.request.contextPath}/venda/VendaServlet?codigo=" + codigo + "&modelo=" + modelo + "&valor=" + valor + "&qtd=" + qtd + "&total=" + total;
+                    $('#btnCompra').prop("href", url);
+
+                    $.ajax(url).done(function () {
+                        alert("Sucesso");
+                        location.reload();
+                    }).fail(function () {
+                        alert("Falha");
+                    });
                 });
             });
 
