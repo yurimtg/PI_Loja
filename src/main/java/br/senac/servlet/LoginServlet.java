@@ -1,11 +1,8 @@
 package br.senac.servlet;
 
-import br.senac.conexaobd.dao.FuncionarioDAO;
-import br.senac.conexaobd.entidades.Funcionario;
+import br.senac.conexaobd.dao.UsuarioDAO;
+import br.senac.conexaobd.entidades.Usuario;
 import java.io.IOException;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -19,21 +16,18 @@ public class LoginServlet extends HttpServlet{
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        String login = request.getParameter("login");
+        String login = request.getParameter("usuario");
+        String senha = request.getParameter("senha");
        
+        Usuario usuario = UsuarioDAO.getUsuario(login,senha);
+           
+        if(login == null){
         
-        Funcionario funcionario = null;
-        try {
-            funcionario = FuncionarioDAO.getUsuario(login);
-        } catch (SQLException ex) {
-            Logger.getLogger(LoginServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }else{
+            HttpSession sessao  = request.getSession();
+            sessao.setAttribute("usuario", usuario);
+            response.sendRedirect(request.getContextPath()+"/protegido/uteis/header.jsp");
         }
-     
-            
-            HttpSession sessao = request.getSession();
-            sessao.setAttribute("user", funcionario);
-            response.sendRedirect(request.getContextPath());
-            
     }
 }
 

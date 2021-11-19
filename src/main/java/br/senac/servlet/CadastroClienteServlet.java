@@ -49,9 +49,9 @@ public class CadastroClienteServlet extends HttpServlet {
             } else {
                 ClienteDAO.inserirCliente(cliente);
             }
-            response.sendRedirect(request.getContextPath() + "/uteis/sucesso.jsp");
+            response.sendRedirect(request.getContextPath()+"/protegido/uteis/sucesso.jsp");
         } catch (SQLException ex) {
-            response.sendRedirect(request.getContextPath() + "/uteis/erro.jsp");
+            response.sendRedirect("/protegido/uteis/erro.jsp");
         }
     }
 
@@ -63,10 +63,10 @@ public class CadastroClienteServlet extends HttpServlet {
         if ("1".equals(ope)) {
             Cliente cliente = ClienteDAO.getClientePorCPF(cpf);
             req.setAttribute("clienteAtualizacao", cliente);
-            req.getRequestDispatcher("/cliente/cadastro.jsp").forward(req, resp);
+            req.getRequestDispatcher("/protegido/cliente/cadastro.jsp").forward(req, resp);
         } else {
             ClienteDAO.deletarCliente(cpf);
-            resp.sendRedirect(req.getContextPath() + "/cliente/ListarClienteServlet");
+            resp.sendRedirect(req.getContextPath()+"/protegido/cliente/ListarClienteServlet");
         }
 
     }

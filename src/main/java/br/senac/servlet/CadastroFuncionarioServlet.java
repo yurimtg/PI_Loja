@@ -48,9 +48,9 @@ public class CadastroFuncionarioServlet extends HttpServlet {
                 
                 FuncionarioDAO.inserirFuncionario(funcionario);
             }
-            response.sendRedirect(request.getContextPath() + "/uteis/sucesso.jsp");
+            response.sendRedirect(request.getContextPath() + "/protegido/uteis/sucesso.jsp");
         } catch (SQLException ex) {
-            response.sendRedirect(request.getContextPath() + "/uteis/erro.jsp");
+            response.sendRedirect(request.getContextPath() + "/protegido/uteis/erro.jsp");
         }
     }
 
@@ -61,10 +61,10 @@ public class CadastroFuncionarioServlet extends HttpServlet {
         if ("1".equals(ope)) {
             Funcionario funcionario = FuncionarioDAO.getFuncionarioPorCPF(cpf);
             req.setAttribute("funcionarioAtualizacao", funcionario);
-            req.getRequestDispatcher("/funcionario/cadastroFuncionario.jsp").forward(req, resp);
+            req.getRequestDispatcher("/protegido/funcionario/cadastroFuncionario.jsp").forward(req, resp);
         } else {
             FuncionarioDAO.deletarFuncionario(cpf);
-            resp.sendRedirect(req.getContextPath() + "/funcionario/ListarFuncionarioServlet");
+            resp.sendRedirect(req.getContextPath()+"/protegido/funcionario/ListarFuncionarioServlet");
         }
 
     }

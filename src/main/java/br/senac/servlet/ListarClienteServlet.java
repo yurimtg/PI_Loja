@@ -4,7 +4,6 @@ package br.senac.servlet;
 import br.senac.conexaobd.dao.ClienteDAO;
 import br.senac.conexaobd.entidades.Cliente;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -21,7 +20,7 @@ public class ListarClienteServlet extends HttpServlet {
         List<Cliente> clientes = ClienteDAO.getClientes();
         request.setAttribute("listaClientes", clientes);
 
-        String url = "/cliente/listar.jsp";
+        String url = "/protegido/cliente/listar.jsp";
         request.getRequestDispatcher(url).forward(request, response);       
     }
   

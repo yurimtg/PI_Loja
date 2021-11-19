@@ -20,7 +20,7 @@ public class ListarFuncionarioServlet extends HttpServlet {
         request.setAttribute("listaFuncionario", funcionario);
 
       
-        String url = "/funcionario/listarFuncionario.jsp";
+        String url = "/protegido/funcionario/listarFuncionario.jsp";
         request.getRequestDispatcher(url).forward(request, response);
 
     }

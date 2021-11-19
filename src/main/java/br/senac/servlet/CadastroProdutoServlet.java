@@ -51,9 +51,9 @@ public class CadastroProdutoServlet extends HttpServlet {
                 
                 produtoDAO.inserirProduto(produto);
             }
-            response.sendRedirect(request.getContextPath() + "/uteis/sucesso.jsp");
+            response.sendRedirect(request.getContextPath() + "/protegido/uteis/sucesso.jsp");
         } catch (SQLException ex) {
-            response.sendRedirect(request.getContextPath() + "/uteis/erro.jsp");
+            response.sendRedirect(request.getContextPath() + "/protegido/uteis/erro.jsp");
         }
     }
 
@@ -65,10 +65,10 @@ public class CadastroProdutoServlet extends HttpServlet {
         if ("1".equals(ope)) {
             Produto produto = produtoDAO.getProdutoPorCod(cod);
             req.setAttribute("produtoAtualizacao", produto);
-            req.getRequestDispatcher("/produto/cadastroProduto.jsp").forward(req, resp);
+            req.getRequestDispatcher("/protegido/produto/cadastroProduto.jsp").forward(req, resp);
         } else {
             produtoDAO.deletarProduto(cod);
-            resp.sendRedirect(req.getContextPath() + "/produto/ListarProdutoServlet");
+            resp.sendRedirect(req.getContextPath()+"/protegido/produto/ListarProdutoServlet");
         }
 
     }

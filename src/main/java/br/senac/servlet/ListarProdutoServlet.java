@@ -14,13 +14,13 @@ public class ListarProdutoServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String url = "/produto/listarProduto.jsp";
+        String url = "/protegido/produto/listarProduto.jsp";
         List<Produto> produto = produtoDAO.getProduto();
         request.setAttribute("listaProduto", produto);
 
         String venda = request.getParameter("venda");
         if ("1".equals(venda)) {
-            url = "/venda/venda.jsp";
+            url = "/protegido/venda/venda.jsp";
         }
 
         request.getRequestDispatcher(url).forward(request, response);
