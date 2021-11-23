@@ -68,7 +68,7 @@ public class CadastroProdutoServlet extends HttpServlet {
             req.getRequestDispatcher("/protegido/produto/cadastroProduto.jsp").forward(req, resp);
         } else {
             produtoDAO.deletarProduto(cod);
-            resp.sendRedirect(req.getContextPath()+"/protegido/produto/ListarProdutoServlet");
+            resp.sendRedirect(req.getContextPath()+"/produto/ListarProdutoServlet");
         }
 
     }

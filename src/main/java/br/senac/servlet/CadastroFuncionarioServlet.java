@@ -18,7 +18,7 @@ public class CadastroFuncionarioServlet extends HttpServlet {
       String ope = request.getParameter("ope");
         
         String nome = request.getParameter("nomeFuincionario");
-        String email = request.getParameter("emailFuincionario");
+        String email = request.getParameter("emailFuncionario");
         String cpf = request.getParameter("cpfFuincionario");
         String telefone = request.getParameter("telefoneFuincionario");
         Double salario = Double.parseDouble(request.getParameter("salarioFuincionario"));

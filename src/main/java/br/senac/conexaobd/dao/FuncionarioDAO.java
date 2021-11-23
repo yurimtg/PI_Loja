@@ -15,8 +15,8 @@ public class FuncionarioDAO {
     
       public static void inserirFuncionario(Funcionario funcionario) throws SQLException {
         boolean ok = true;
-        String query = "insert into funcionario(nome,cpf,email,sexo,telefone,salario,cargo) "
-                + "values (?,?,?,?,?,?,?)";
+        String query = "insert into funcionario(nome,cpf,email,sexo,telefone,salario,cargo)"
+                +"values (?,?,?,?,?,?,?)";
         Connection con = Conexao.getConexao();
         PreparedStatement ps;
         ps = con.prepareStatement(query);

@@ -51,6 +51,7 @@
             <div style="width:25%;height: 50px; float: left;" >
                 <h5> <a href="${pageContext.request.contextPath}/protegido/relatorio/relatorio.jsp">RELATÓRIO DE VENDA</a></h5><br/>
             </div>
+                Bem Vindo ${sessionScope.usuario.usuario}
         </div>
 
 
