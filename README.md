@@ -1,6 +1,7 @@
 # LojaDeTenis
 Integrantes: Daniel Oliveira Matheus Alexandre de Costa Castro Jamile Marian Polycarpo Yuri de Oliveira Ignácio
 
+
 CREATE TABLE cliente(
 codigo integer not null primary key generated always as identity (start with 1, increment by 1),
 cpf varchar(11) not null,
@@ -11,6 +12,8 @@ enderecoNumero varchar(20),
 enderecoComplemento varchar(50),
 email varchar(40) not null,
 sexo char not null);
+
+
 
 CREATE TABLE funcionario(
 codFuncionario integer not null primary key generated always as identity (start with 1, increment by 1),
@@ -30,3 +33,18 @@ tamanho integer not null,
 estoque  integer not null,
 valor numeric not null,
 genero char not null);
+
+CREATE TABLE cargo(
+codCargo integer not null primary key generated always as identity (start with 1, increment by 1),
+cargo varchar(50) not null,);
+
+
+ 
+CREATE TABLE cargo(
+codUsuario integer not null primary key generated always as identity (start with 1, increment by 1),
+usuario varchar(50) not null,
+senha varchar(50) not null,
+nivelAcesso int not null,
+fk_codFuncionario int not null,
+foreign key (fk_codFuncionario) references funcionario (codFuncionario));
+
