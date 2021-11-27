@@ -4,13 +4,16 @@ br\senac\conexaobd\dao\UsuarioDAO.class
 br\senac\conexaobd\dao\ClienteDAO.class
 br\senac\conexaobd\entidades\Cliente.class
 br\senac\servlet\CadastroClienteServlet.class
+br\senac\conexaobd\dao\CargoDAO.class
 br\senac\servlet\ListarFuncionarioServlet.class
 br\senac\conexaobd\dao\FuncionarioDAO.class
+br\senac\conexaobd\entidades\Cargo.class
 br\senac\servlet\LoginServlet.class
 bt\senac\conexaobd\filter\AutorizacaoFilter.class
 br\senac\conexaobd\dao\produtoDAO.class
 br\senac\conexaobd\entidades\Funcionario.class
 br\senac\conexaobd\entidades\Usuario.class
+br\senac\servlet\CargoServlet.class
 br\senac\servlet\ListarClienteServlet.class
 br\senac\servlet\VendaServlet.class
 br\senac\servlet\CadastroProdutoServlet.class

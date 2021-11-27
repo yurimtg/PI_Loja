@@ -26,7 +26,7 @@
         </style>
     </head>
     <body class="container" style="background-color: #f2f2f2;">
-        
+
         <c:import url="../uteis/header.jsp"/>
 
         <fieldset style="background-color: white; width: 90%; margin: auto; border: none; padding: 3%; border-radius: 20px; margin-top: 30px;">
@@ -65,9 +65,17 @@
 
                 <label >Cargo:</label> 
                 <input type="text" name="cargoFuincionario" class="form-control" style="width: 30%"value="${funcionarioAtualizacao.cargo}" /><br/>
-              
-                <button type="submit" id="btnEnviar">Enviar</button>
 
+
+               
+                   <select name="cargoFuncionario" style="width: 30%">
+                        <c:forEach var="cargo" items="${cargos}">
+                        <option value="${cargo.cargo}">${cargo.codCargo} - ${cargo.cargo}</option>
+                        </c:forEach>
+                    </select>
+                
+                
+                <button type="submit" id="btnEnviar">Enviar</button>
             </form>
         </fieldset>
     </body>

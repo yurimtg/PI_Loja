@@ -8,6 +8,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 public class ListarProdutoServlet extends HttpServlet {
 
@@ -16,11 +17,13 @@ public class ListarProdutoServlet extends HttpServlet {
             throws ServletException, IOException {
         String url = "/protegido/produto/listarProduto.jsp";
         List<Produto> produto = produtoDAO.getProduto();
-        request.setAttribute("listaProduto", produto);
+        
+            HttpSession sessao  = request.getSession();
+            sessao.setAttribute("listaProduto", produto);
 
-        String venda = request.getParameter("venda");
-        if ("1".equals(venda)) {
-            url = "/protegido/venda/venda.jsp";
+        String ope = request.getParameter("ope");
+        if ("1".equals(ope)) {
+            url =  "/protegido/venda/venda.jsp";
         }
 
         request.getRequestDispatcher(url).forward(request, response);

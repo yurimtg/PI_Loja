@@ -1,12 +1,14 @@
 package br.senac.servlet;
 
-import br.senac.conexaobd.dao.ClienteDAO;
-import br.senac.conexaobd.entidades.Cliente;
 import java.io.IOException;
+import java.util.Date;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 public class VendaServlet extends HttpServlet {
 
@@ -18,10 +20,15 @@ public class VendaServlet extends HttpServlet {
         String vValor[] = req.getParameter("valor").split(",");
         String vQtd[] = req.getParameter("qtd").split(",");
         String vTotal[] = req.getParameter("total").split(",");
+                
+                
+                SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+                Date date =  new Date();
+                
+                String data = sdf.format(date);
+                
 
-//            Cliente cliente = ClienteDAO.getClientePorCPF(cpf);
-//            req.setAttribute("clienteAtualizacao", cliente);
-//            req.getRequestDispatcher("/cliente/cadastro.jsp").forward(req, resp);
+
     }
 
 }

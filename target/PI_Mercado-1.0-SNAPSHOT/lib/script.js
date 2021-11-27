@@ -22,6 +22,67 @@ $(document).ready(function () {
     });
   
 });
+//-------------------------------------------------------------------------------------------------------------------
+                $('.btnADD').click(function () {
+
+                    var row = $(this).closest("tr");
+                    var qtd = row.find("td:eq(6)").text();
+                    var estoque = row.find("td:eq(4)");
+                    var estoqueAtual = estoque.text() - qtd;
+                    if (qtd <= 0) {
+                        alert("Informe a quantidade");
+                        return;
+                    }
+                    if (estoqueAtual < 0) {
+                        alert("Estoque insuficiente");
+                        return;
+                    }
+                    var codigo = row.find("td:eq(0)").text();
+                    var modelo = row.find("td:eq(2)").text();
+                    var valor = row.find("td:eq(3)").text();
+                    estoque.html(estoqueAtual);
+                    var tr = '<tr><td class="td_codigo">' + codigo + '</td><td class="td_modelo">' + modelo + '</td><td class="td_valor">' + valor + '</td><td class="td_quantidade">' + qtd + '</td><td class="td_total">' + qtd * valor + '</td></tr>';
+                    $('#tblCarrinho tbody').append(tr);
+                });
+                $('.qtd').dblclick(function () {
+
+                    var vInicial = $(this).text();
+                    var input = $('<input/>', {type: 'text', value: vInicial, style: 'width: 30px'});
+                    $(this).html(input.blur(function () {
+                        var novoConteudo = $(this).val();
+                        $(this).parent().html(novoConteudo);
+                    }));
+                });
+//-------------------------------------------------------------------------------------------------------------------
+                $('#btnCompra').click(function () {
+
+                    var codigo="";
+                    var modelo="";
+                    var valor="";
+                    var qtd="";
+                    var total="";
+
+                    for (i = 0; i < $('.td_codigo').length; i++) {
+                        codigo += $('.td_codigo')[i].firstChild.nodeValue + ",";
+                        modelo += $('.td_modelo')[i].firstChild.nodeValue + ",";
+                        valor += $('.td_valor')[i].firstChild.nodeValue + ",";
+                        qtd += $('.td_quantidade')[i].firstChild.nodeValue + ",";
+                        total += $('.td_total')[i].firstChild.nodeValue + ",";
+
+                    }
+                    
+                    var url = "${pageContext.request.contextPath}/venda/VendaServlet?codigo=" + codigo + "&modelo=" + modelo + "&valor=" + valor + "&qtd=" + qtd + "&total=" + total;
+                    $('#btnCompra').prop("href", url);
+
+                    $.ajax(url).done(function () {
+                        alert("Sucesso");
+                        location.reload();
+                    }).fail(function () {
+                        alert("Falha");
+                    });
+                });
+         
+
 
 //------------------------------------------------------------------------------        
   function ValidateField(field) {

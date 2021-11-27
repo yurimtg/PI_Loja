@@ -44,15 +44,23 @@
         <servlet-name>LoginServlet</servlet-name>
         <servlet-class>br.senac.servlet.LoginServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CargoServlet</servlet-name>
+        <servlet-class>br.senac.servlet.CargoServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CarrinhoServlet</servlet-name>
+        <servlet-class>br.senac.servlet.CarrinhoServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ListarClienteServlet</servlet-name>
         <url-pattern>/cliente/ListarClienteServlet</url-pattern>
-        <url-pattern>/protegido/cliente/ListarClienteServlet</url-pattern>       
+        <url-pattern>/protegido/cliente/ListarClienteServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>CadastroFuncionarioServlet</servlet-name>
         <url-pattern>/funcionario/CadastroFuncionarioServlet</url-pattern>
-         <url-pattern>/protegido/funcionario/CadastroFuncionarioServlet</url-pattern>
+        <url-pattern>/protegido/funcionario/CadastroFuncionarioServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ListarFuncionarioServlet</servlet-name>
@@ -63,7 +71,6 @@
         <servlet-name>CadastroProdutoServlet</servlet-name>
         <url-pattern>/produto/CadastroProdutoServlet</url-pattern>
         <url-pattern>/protegido/produto/CadastroProdutoServlet</url-pattern>
-     
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ListarProdutoServlet</servlet-name>
@@ -82,6 +89,15 @@
         <servlet-name>CadastroClienteServlet</servlet-name>
         <url-pattern>/cliente/CadastroClienteServlet</url-pattern>
         <url-pattern>/protegido/cliente/CadastroClienteServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CargoServlet</servlet-name>
+        <url-pattern>/CargoServlet</url-pattern>
+        <url-pattern>/protegido/CargoServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CarrinhoServlet</servlet-name>
+        <url-pattern>/CarrinhoServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

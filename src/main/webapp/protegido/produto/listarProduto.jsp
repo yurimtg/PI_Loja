@@ -40,7 +40,7 @@
             <td>Código</td><td>Marca</td><td>Modelo</td><td>Valor</td><td>Estoque</td><td>Tamanho</td>
         </thead>
         <tbody>
-            <c:forEach var="produto" items="${listaProduto}">
+            <c:forEach var="produto" items="${sessionScope.listaProduto}">
                 <tr>
                     <td>${produto.codProduto}</td>
                     <td>${produto.marca}</td>
