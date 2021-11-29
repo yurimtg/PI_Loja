@@ -21,7 +21,8 @@ public class LoginServlet extends HttpServlet{
        
         Usuario usuario = UsuarioDAO.getUsuario(login,senha);
            
-        if(login == null){
+        if(login == null && usuario.validarSenha(senha)){
+         response.sendRedirect(request.getContextPath()+"/login.jsp?loginInvalido=true");
         
         }else{
             HttpSession sessao  = request.getSession();
