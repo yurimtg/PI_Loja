@@ -24,13 +24,6 @@ public class ListarClienteServlet extends HttpServlet {
         HttpSession sessao = request.getSession();
         sessao.setAttribute("clientes", clientes);
 
-        String cpfCli = request.getParameter("cpfCliente");
-        String vendaCli = request.getParameter("vendaCli");
-        if ("1".equals(vendaCli)) {
-            Cliente cliente = ClienteDAO.getClientePorCPF(cpfCli);
-            sessao.setAttribute("cliente", cliente);
-            url = "/protegido/venda/venda.jsp";
-        }
 
         request.getRequestDispatcher(url).forward(request, response);
 

@@ -7,6 +7,7 @@ br\senac\servlet\CadastroClienteServlet.class
 br\senac\conexaobd\dao\CargoDAO.class
 br\senac\servlet\ListarFuncionarioServlet.class
 br\senac\conexaobd\dao\FuncionarioDAO.class
+br\senac\conexaobd\dao\ItemVendaDAO.class
 br\senac\conexaobd\entidades\Cargo.class
 br\senac\servlet\LoginServlet.class
 bt\senac\conexaobd\filter\AutorizacaoFilter.class
@@ -17,5 +18,6 @@ br\senac\servlet\CargoServlet.class
 br\senac\servlet\ListarClienteServlet.class
 br\senac\servlet\VendaServlet.class
 br\senac\servlet\CadastroProdutoServlet.class
+br\senac\conexaobd\dao\VendaDAO.class
 br\senac\servlet\ListarProdutoServlet.class
 br\senac\servlet\CadastroFuncionarioServlet.class
