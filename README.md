@@ -48,3 +48,26 @@ nivelAcesso int not null,
 fk_codFuncionario int not null,
 foreign key (fk_codFuncionario) references funcionario (codFuncionario));
 
+
+CREATE TABLE venda (
+codVenda INTEGER NOT NULL PRIMARY KEY GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
+data_venda date not null,
+fk_codcli int not null,
+fk_codFuncionario int not null,
+valor_total decimal not null,
+foreign key (fk_codcli) references cliente (codigo),
+foreign key (fk_codFuncionario) references funcionario (codFuncionario)); 
+
+CREATE TABLE itemVenda (
+codItemVenda INTEGER NOT NULL PRIMARY KEY GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
+qtd int not null,
+precoUnitario decimal not null,
+subTotal decimal not null,
+fk_codProduto int not null,
+fk_codVenda int not null,
+foreign key (fk_codProduto ) references produto (codProduto),
+foreign key (fk_codVenda) references venda (codVenda)); 
+ex:
+INSERT INTO venda (data_venda,fk_codCli,fk_codfuncionario,valor_total) values('2021-11-21', 216,3,452);
+
+
