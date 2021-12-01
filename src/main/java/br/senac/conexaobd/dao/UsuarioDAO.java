@@ -13,7 +13,7 @@ import java.util.logging.Logger;
 
 public class UsuarioDAO {
     
-    public static Usuario getUsuario(String login, String senhaUsuario) {
+    public static Usuario getUsuario(String login) {
         
         Usuario usuario = null;
         Connection con = Conexao.getConexao();
@@ -22,16 +22,16 @@ public class UsuarioDAO {
         try {
             PreparedStatement ps = con.prepareStatement(query);
             ps.setString(1, login);
-            ps.setString(2, senhaUsuario);
+            
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 usuario = new Usuario();
                 String user = rs.getString("usuario");
-                String senhaFechada = rs.getString("senha");            
+                String senha = rs.getString("senha");            
                 int fkcod = rs.getInt("fk_codfuncionario");             
                 int acesso = rs.getInt("nivelacesso");
                 usuario.setUsuario(user);
-                usuario.setSenha(senhaFechada);
+                usuario.setSenha(senha);
                 usuario.setNivelAcesso(acesso);
                 usuario.setFkCodFuncionario(fkcod);
                 
@@ -41,4 +41,6 @@ public class UsuarioDAO {
         }
         return usuario;
     }
+
+   
 }

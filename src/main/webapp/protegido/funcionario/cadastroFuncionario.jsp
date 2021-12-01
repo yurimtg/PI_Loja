@@ -39,10 +39,10 @@
                 </c:if>
 
                 <label >Nome:</label>
-                <input required type="text" name="nomeFuincionario" class="form-control" style="width: 40%; float: left; margin-right: 2%;" value="${funcionarioAtualizacao.nome}"/>
+                <input required type="text" name="nomeFuncionario" class="form-control" style="width: 40%; float: left; margin-right: 2%;" value="${funcionarioAtualizacao.nome}"/>
 
                 <label >CPF:</label>
-                <input required type="text" name="cpfFuincionario" class="form-control" style="width: 35%" value="${funcionarioAtualizacao.cpf}" /><br/>
+                <input required type="text" name="cpfFuncionario" class="form-control" style="width: 35%" value="${funcionarioAtualizacao.cpf}" /><br/>
 
                 <div class="input">
                     <label>Email:</label>
@@ -50,7 +50,7 @@
                     <span class="error"></span>
                 </div>
                 <label>Telefone:</label>
-                <input type="text" name="telefoneFuincionario" class="form-control" style="width: 35%;float: left; margin-right: 2%;" value="${funcionarioAtualizacao.telefone}"/>
+                <input type="text" name="telefoneFuncionario" class="form-control" style="width: 35%;float: left; margin-right: 2%;" value="${funcionarioAtualizacao.telefone}"/>
                 <br/>
                 <div style="margin-top: 40px;">
                     <label>Sexo:</label>
@@ -59,18 +59,20 @@
                     <strong>F:</strong>
                     <input type="radio" name="sexo" id="rboFeminino" value="feminino"><br/>
                 </div>      <br/>
-
+                 
+                <label>Filial:</label>
+                <input type="text" name="FilialFuncionário" class="form-control" style="width:30%"value="${funcionarioAtualizacao.filial}"/> 
                 <label >Salario:</label>
-                <input type="text" name="salarioFuincionario" class="form-control" style="width: 40%; float: left; margin-right: 2%;" value="${funcionarioAtualizacao.salario}"/>
+                <input type="text" name="salarioFuncionário" class="form-control" style="width: 40%; float: left; margin-right: 2%;" value="${funcionarioAtualizacao.salario}"/>
 
                 <label >Cargo:</label> 
-                <input type="text" name="cargoFuincionario" class="form-control" style="width: 30%"value="${funcionarioAtualizacao.cargo}" /><br/>
+                <input type="text" name="cargoFuncionário" class="form-control" style="width: 30%"value="${funcionarioAtualizacao.cargo}" /><br/>
 
-
+                
                
                    <select name="cargoFuncionario" style="width: 30%">
                         <c:forEach var="cargo" items="${cargos}">
-                        <option value="${cargo.cargo}">${cargo.codCargo} - ${cargo.cargo}</option>
+                        <option value="${cargo.cargo}">${cargo.codCargo}</option>
                         </c:forEach>
                     </select>
                 

@@ -16,5 +16,6 @@ public class Funcionario {
     private double salario;
     private String cargo;
     private int codFuncionario;
-    private String login;    
+    private String login;   
+    private String filial;
 }

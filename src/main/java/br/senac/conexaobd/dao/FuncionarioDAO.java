@@ -15,8 +15,8 @@ public class FuncionarioDAO {
     
       public static void inserirFuncionario(Funcionario funcionario) throws SQLException {
         boolean ok = true;
-        String query = "insert into funcionario(nome,cpf,email,sexo,telefone,salario,cargo)"
-                +"values (?,?,?,?,?,?,?)";
+        String query = "insert into funcionario(nome,cpf,email,sexo,telefone,salario,cargo,filial)"
+                +"values (?,?,?,?,?,?,?,?)";
         Connection con = Conexao.getConexao();
         PreparedStatement ps;
         ps = con.prepareStatement(query);
@@ -27,6 +27,7 @@ public class FuncionarioDAO {
         ps.setString(5, funcionario.getTelefone());
         ps.setDouble(6, funcionario.getSalario());
         ps.setString(7, funcionario.getCargo());
+        ps.setString(8, funcionario.getFilial());
         ps.execute();
     }
 
@@ -48,6 +49,7 @@ public class FuncionarioDAO {
                 String cargo = rs.getString("cargo");
                 String sexo = rs.getString("sexo");
                 int cod = rs.getInt("codFuncionario");
+                String filial = rs.getString("filial");
 
                 funcionario.setNome(nome);
                 funcionario.setEmail(email);
@@ -57,6 +59,7 @@ public class FuncionarioDAO {
                 funcionario.setCargo(cargo);
                 funcionario.setSexo(sexo);
                 funcionario.setCodFuncionario(cod);
+                funcionario.setFilial(filial);
                 
                 funcionarios.add(funcionario);
             }
@@ -122,7 +125,7 @@ public class FuncionarioDAO {
 
     public static boolean atualizarFuncioanario(Funcionario funcionario) {
         boolean ok = true;
-        String query = "update funcionario set nome=?,email=?,telefone=?,salario=?,cargo=?,sexo=? where cpf=?";
+        String query = "update funcionario set nome=?,email=?,telefone=?,salario=?,cargo=?,sexo=?,cpf=? where filial=?";
         Connection con = Conexao.getConexao();
         try {
             PreparedStatement ps = con.prepareStatement(query);
@@ -133,6 +136,7 @@ public class FuncionarioDAO {
             ps.setString(5, funcionario.getCargo());
             ps.setString(6, funcionario.getSexo());
             ps.setString(7, funcionario.getCpf());
+            ps.setString(8, funcionario.getFilial());
             ps.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(FuncionarioDAO.class.getName()).log(Level.SEVERE, null, ex);

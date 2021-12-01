@@ -31,12 +31,26 @@
             height: 40px;
             margin-left: 20%;
         }
+        .container{
+            display: block;       
+            padding: 0;         
+            background: #99ccff; 
+          
+       
+        }
         
     </style>
     <title>JSP Page</title>
 </head>
 
 <body class="container">
+    
+    
+       <c:if test="${param.loginInvalido != null}">
+            <div class="alert alert-danger" role="alert">
+                Usuário/Senha inválidos
+            </div>
+        </c:if>
     <form method="post" action="LoginServlet" class="formLogin">
             <h2 style="color: red"><c:out value="${msgErro}"/></h2>
 
@@ -48,7 +62,10 @@
  
             <button type="submit"  class="btnLogar">LOGAR</button>
 
+       
             </form>
 
 </body>
+
+
 

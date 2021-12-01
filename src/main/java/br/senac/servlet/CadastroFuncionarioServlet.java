@@ -17,12 +17,13 @@ public class CadastroFuncionarioServlet extends HttpServlet {
         
       String ope = request.getParameter("ope");
         
-        String nome = request.getParameter("nomeFuincionario");
+      String filial = request.getParameter("filial");
+        String nome = request.getParameter("nomeFuncionario");
         String email = request.getParameter("emailFuncionario");
-        String cpf = request.getParameter("cpfFuincionario");
-        String telefone = request.getParameter("telefoneFuincionario");
-        Double salario = Double.parseDouble(request.getParameter("salarioFuincionario"));
-        String cargo =  request.getParameter("cargoFuincionario");
+        String cpf = request.getParameter("cpfFuncionario");
+        String telefone = request.getParameter("telefoneFuncionario");
+        Double salario = Double.parseDouble(request.getParameter("salarioFuncionario"));
+        String cargo =  request.getParameter("cargoFuncionario");
         String sexo = "";
 
         if (request.getParameter("sexo").equals("masculino")) {
@@ -33,6 +34,7 @@ public class CadastroFuncionarioServlet extends HttpServlet {
 
        Funcionario funcionario = new Funcionario();
         
+       funcionario.setFilial(filial);
         funcionario.setNome(nome);
         funcionario.setCpf(cpf);
         funcionario.setEmail(email);

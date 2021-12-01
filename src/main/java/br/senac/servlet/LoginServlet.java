@@ -20,23 +20,22 @@ public class LoginServlet extends HttpServlet{
         String login = request.getParameter("usuario");
         String senha = request.getParameter("senha");
        
-        Usuario usuario = UsuarioDAO.getUsuario(login,senha);
+        Usuario usuario = UsuarioDAO.getUsuario(login);
            
         if(login == null){
-         response.sendRedirect(request.getContextPath()+"/login.jsp?loginInvalido=true");
-        
-        }else{
-            boolean senhaOK = CryptoUtils.verificarSenha(senha, usuario.getSenha());
-            if (senhaOK){
-                HttpSession sessao = request.getSession();
+            HttpSession sessao = request.getSession();
                 sessao.setAttribute("usuario", usuario);
-                response.sendRedirect(request.getContextPath()+"/protegido/index.jsp");
-            }
-               
-            response.sendRedirect(request.getContextPath()+"/login.jsp?loginInvalido=true");
-        }
+                response.sendRedirect(request.getContextPath()+"/protegido/header.jsp");
+          
+            
+         
+        }else{
+   
+               response.sendRedirect(request.getContextPath()+"/login.jsp?loginInvalido=true");
+        
+            
     }
-    
+    }
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

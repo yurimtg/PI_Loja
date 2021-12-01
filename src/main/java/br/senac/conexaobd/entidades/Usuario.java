@@ -16,16 +16,28 @@ public class Usuario {
     private int nivelAcesso;
     private String cargo;
 
+    public Usuario(){
+        
+    }
+
+    public Usuario(String senha, String usuario, int fkCodFuncionario, int nivelAcesso, String cargo) {
+        this.senha = senha;
+        this.usuario = usuario;
+        this.fkCodFuncionario = fkCodFuncionario;
+        this.nivelAcesso = nivelAcesso;
+        this.cargo = cargo;
+    }
     
-public String codificarSenha (String senha){
+    
+    public String codificarSenha(String senha){
         return BCrypt.withDefaults().hashToString(12, senha.toCharArray());
     }
-    
+ 
     public boolean validarSenha(String senha){
-        BCrypt.Result response = BCrypt.verifyer().verify(senha.toCharArray(), this.senha);
-        return response.verified;
+        BCrypt.Result resposta = BCrypt.verifyer().verify(senha.toCharArray(), this.senha);
+        return resposta.verified;
+        
     }
-    
     public boolean isGerente(){
         return this.cargo.equalsIgnoreCase("gerente");
     }
@@ -33,4 +45,8 @@ public String codificarSenha (String senha){
     public boolean isVendedor(){
         return this.cargo.equalsIgnoreCase("vendedor");
     }    
+    
+    public boolean isAdmin(){
+        return this.cargo.equalsIgnoreCase("admin");
+    }
 }

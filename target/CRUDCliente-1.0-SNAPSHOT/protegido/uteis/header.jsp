@@ -17,6 +17,9 @@
     </head>
 
     <body class="container">
+        <div class="boasVindas">
+            <h2>Bem Vindo a Tenis Shop!</h2> 
+        </div>
 
         <div class="barraMenu">
             <div style="width:20%;height: 50px; float: left;" id="divCadastro" >
@@ -25,10 +28,14 @@
                 </h5>
 
                 <div  id="dropCadastro" style="display: none; text-align:center;  width: 13%; position: fixed;" >     
+               
                     <a href="${pageContext.request.contextPath}/protegido/cliente/cadastro.jsp" class="btn btn-primary">Cliente</a><br/>
                     <a href="${pageContext.request.contextPath}/protegido/produto/cadastroProduto.jsp" class="btn btn-primary">Produto</a><br/>
-                    <a href="${pageContext.request.contextPath}/CargoServlet" class="btn btn-primary">Funcionario</a>
+             
+                   <a href="${pageContext.request.contextPath}/CargoServlet" class="btn btn-primary">Funcionario</a>
+                
                 </div>
+                
             </div>
 
             <div style="width:15%;height: 50px; float: left;" id="divLista" >
@@ -50,7 +57,7 @@
             <div style="width:25%;height: 50px; float: left;" >
                 <h5> <a href="${pageContext.request.contextPath}/protegido/relatorio/relatorio.jsp">RELATÓRIO DE VENDA</a></h5><br/>
             </div>
-                Bem Vindo <label id="lblUsuario>"${sessionScope.usuario.usuario}</label>
+                Bem Vindo <label id="lblUsuario>"${sessionScope.usuario.usuario}></label>
                 <a href="${pageContext.request.contextPath}/LoginServlet"/>Sair</a>
         </div>
 
