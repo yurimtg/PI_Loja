@@ -17,7 +17,7 @@ public class UsuarioDAO {
         
         Usuario usuario = null;
         Connection con = Conexao.getConexao();
-        String query = "select * from usuario where usuario=? and senha=?";
+        String query = "select * from usuario where usuario=?";
         
         try {
             PreparedStatement ps = con.prepareStatement(query);
@@ -27,11 +27,11 @@ public class UsuarioDAO {
             if (rs.next()) {
                 usuario = new Usuario();
                 String user = rs.getString("usuario");
-                String senha = rs.getString("senha");            
+                String senhaFechada = rs.getString("senha");            
                 int fkcod = rs.getInt("fk_codfuncionario");             
                 int acesso = rs.getInt("nivelacesso");
                 usuario.setUsuario(user);
-                usuario.setSenha(senha);
+                usuario.setSenha(senhaFechada);
                 usuario.setNivelAcesso(acesso);
                 usuario.setFkCodFuncionario(fkcod);
                 
