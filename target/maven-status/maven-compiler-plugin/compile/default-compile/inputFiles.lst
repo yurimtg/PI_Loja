@@ -2,6 +2,7 @@
 /Users/Jamile/NetBeansProjects/PI_Loja/src/main/java/br/senac/conexaobd/dao/CargoDAO.java
 /Users/Jamile/NetBeansProjects/PI_Loja/src/main/java/br/senac/conexaobd/dao/produtoDAO.java
 /Users/Jamile/NetBeansProjects/PI_Loja/src/main/java/br/senac/servlet/CadastroClienteServlet.java
+/Users/Jamile/NetBeansProjects/PI_Loja/src/main/java/br/senac/conexaobd/filter/AutorizacaoFilter.java
 /Users/Jamile/NetBeansProjects/PI_Loja/src/main/java/br/senac/servlet/LoginServlet.java
 /Users/Jamile/NetBeansProjects/PI_Loja/src/main/java/br/senac/conexaobd/entidades/Cargo.java
 /Users/Jamile/NetBeansProjects/PI_Loja/src/main/java/br/senac/servlet/ListarFuncionarioServlet.java
@@ -19,5 +20,4 @@
 /Users/Jamile/NetBeansProjects/PI_Loja/src/main/java/br/senac/conexaobd/Conexao.java
 /Users/Jamile/NetBeansProjects/PI_Loja/src/main/java/br/senac/conexaobd/dao/FuncionarioDAO.java
 /Users/Jamile/NetBeansProjects/PI_Loja/src/main/java/br/senac/servlet/ListarProdutoServlet.java
-/Users/Jamile/NetBeansProjects/PI_Loja/src/main/java/bt/senac/conexaobd/filter/AutorizacaoFilter.java
 /Users/Jamile/NetBeansProjects/PI_Loja/src/main/java/br/senac/conexaobd/dao/VendaDAO.java

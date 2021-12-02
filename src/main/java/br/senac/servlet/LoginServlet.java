@@ -2,7 +2,7 @@ package br.senac.servlet;
 
 import br.senac.conexaobd.dao.UsuarioDAO;
 import br.senac.conexaobd.entidades.Usuario;
-import br.senac.uteis.CryptoUtils;
+
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -20,19 +20,17 @@ public class LoginServlet extends HttpServlet{
         String login = request.getParameter("usuario");
         String senha = request.getParameter("senha");
        
-        Usuario usuario = UsuarioDAO.getUsuario(login);
+        Usuario usuario = UsuarioDAO.getUsuario(login,senha); 
            
-        if(login == null){
-            HttpSession sessao = request.getSession();
+        if(login  == null){
+            
+          
+        }else{
+                HttpSession sessao = request.getSession();
                 sessao.setAttribute("usuario", usuario);
                 response.sendRedirect(request.getContextPath()+"/protegido/header.jsp");
           
-            
-         
-        }else{
-   
-               response.sendRedirect(request.getContextPath()+"/login.jsp?loginInvalido=true");
-        
+               
             
     }
     }

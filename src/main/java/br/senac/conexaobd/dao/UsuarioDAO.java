@@ -13,31 +13,32 @@ import java.util.logging.Logger;
 
 public class UsuarioDAO {
     
-    public static Usuario getUsuario(String login) {
+    public static Usuario getUsuario(String login, String senha) {
         
         Usuario usuario = null;
         Connection con = Conexao.getConexao();
-        String query = "select * from usuario where usuario=?";
+        String query = "select * from usuario where usuario=? and senha=?";
         
         try {
             PreparedStatement ps = con.prepareStatement(query);
             ps.setString(1, login);
+            ps.setString(2, senha);
             
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 usuario = new Usuario();
                 String user = rs.getString("usuario");
-                String senha = rs.getString("senha");            
+                String senhaFechada = rs.getString("senha");            
                 int fkcod = rs.getInt("fk_codfuncionario");             
                 int acesso = rs.getInt("nivelacesso");
                 usuario.setUsuario(user);
-                usuario.setSenha(senha);
+                usuario.setSenha(senhaFechada);
                 usuario.setNivelAcesso(acesso);
                 usuario.setFkCodFuncionario(fkcod);
                 
             }
         } catch (SQLException ex) {
-            Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return usuario;
     }
