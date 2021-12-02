@@ -73,7 +73,6 @@
                         valor += $('.td_valor')[i].firstChild.nodeValue + ",";
                         qtd += $('.td_quantidade')[i].firstChild.nodeValue + ",";
                         total += $('.td_total')[i].firstChild.nodeValue + ",";
-
                     }
 
 

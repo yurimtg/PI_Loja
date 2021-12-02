@@ -9,7 +9,7 @@ import java.sql.SQLException;
 
 public class ItemVendaDAO {
 
-    public static void inserirCliente(ItemVenda itemVenda) throws SQLException {
+    public static void inserirItemVenda(ItemVenda itemVenda) throws SQLException {
 
         String query = "insert into itemVenda(qtd,precoUnitario,subTotal,fk_codProduto,fk_codVenda) "
                 + "values (?,?,?,?,?)";

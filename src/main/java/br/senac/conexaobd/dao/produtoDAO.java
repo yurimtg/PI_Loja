@@ -31,41 +31,6 @@ public class produtoDAO {
         ps.execute();
         
     }
-
-    public static List<Produto> getProduto() {
-        List<Produto> produtos = new ArrayList<>();
-        String query = "select * from produto";
-
-        Connection con = Conexao.getConexao();
-        try {
-            PreparedStatement ps = con.prepareStatement(query);
-            ResultSet rs = ps.executeQuery();
-            while (rs.next()) {             
-                Produto produto = new Produto();
-                String marca = rs.getString("marca");
-                String modelo = rs.getString("modelo");
-                Double valor = rs.getDouble("valor");
-                int estoque = rs.getInt("estoque");
-                int tamanho = rs.getInt("tamanho");
-                int cod = rs.getInt("codProduto");
-                String genero = rs.getString("genero");
-
-                produto.setMarca(marca);
-                produto.setModelo(modelo);
-                produto.setValor(valor);
-                produto.setEstoque(estoque);
-                produto.setTamanho(tamanho);
-                produto.setCodProduto(cod);
-                produto.setGenero(genero);
-
-                produtos.add(produto);
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(produtoDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return produtos;
-    }
-
     public static Produto getProdutoPorCod(int cod) {
         Produto produto = null;
         String query = "select * from produto where codProduto=?";
@@ -138,4 +103,37 @@ public class produtoDAO {
         }
         return ok;
     } 
+    
+        public static List<Produto>getProduto(){
+            List<Produto> produtos = new ArrayList();
+            String query = "select * from produto";
+            
+            Connection con = Conexao.getConexao();
+            try {
+                PreparedStatement ps = con.prepareStatement(query);
+                ResultSet rs = ps.executeQuery();
+                while (rs.next()) {
+                    Produto produto = new Produto();
+                    String marca = rs.getString("marca");
+                    String modelo = rs.getString("modelo");
+                    Double valor = rs.getDouble("valor");
+                    int estoque = rs.getInt("estoque");
+                    int tamanho = rs.getInt("tamanho");
+                    int cod = rs.getInt("codProduto");
+                    String genero = rs.getString("genero");
+                    
+                    produto.setMarca(marca);
+                    produto.setModelo(modelo);
+                    produto.setValor(valor);
+                    produto.setEstoque(estoque);
+                    produto.setTamanho(tamanho);
+                    produto.setCodProduto(cod);
+                    produto.setGenero(genero);
+                    
+                    produtos.add(produto);
+                }
+            } catch (SQLException ex) {
+            }
+            return produtos;
+        }
 }

@@ -45,12 +45,17 @@ public class VendaServlet extends HttpServlet {
             VendaDAO.novaVenda(data, codCli, user, total);
 
             Venda venda = VendaDAO.getCodVenda();
-            venda.getCodVenda();
+            int codVenda = venda.getCodVenda();
 
             for(int i = 0; i < vCod.length; i++) {
                 ItemVenda item = new ItemVenda();
                 item.setCodItemVenda(codCli);
-                ItemVendaDAO.inserirCliente(item);
+                item.setFkCodProduto(Integer.parseInt(vCod[i]));
+                item.setFkCodVenda(codVenda);
+                item.setPrecoUnitario(Double.parseDouble(vValor[i]));
+                item.setQtd(Integer.parseInt(vQtd[i]));
+                item.setSubTotal(Double.parseDouble(vValor[i])*Integer.parseInt(vQtd[i]));
+                ItemVendaDAO.inserirItemVenda(item);
             }
 
             resp.sendRedirect(req.getContextPath() + "/protegido/venda/venda.jsp");
