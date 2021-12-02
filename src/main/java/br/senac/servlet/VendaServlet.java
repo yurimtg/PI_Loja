@@ -1,15 +1,15 @@
 package br.senac.servlet;
 
 import br.senac.conexaobd.dao.ClienteDAO;
+import br.senac.conexaobd.dao.ItemVendaDAO;
 import br.senac.conexaobd.dao.VendaDAO;
 import br.senac.conexaobd.entidades.Cliente;
+import br.senac.conexaobd.entidades.ItemVenda;
+import br.senac.conexaobd.entidades.Venda;
 import java.io.IOException;
 import java.sql.SQLException;
-import java.text.ParseException;
 import java.util.Date;
 import java.text.SimpleDateFormat;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -30,24 +30,34 @@ public class VendaServlet extends HttpServlet {
         int user = Integer.parseInt(req.getParameter("usuario"));
         Double total = 0d;
 
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         Date date = new Date();
         String data = sdf.format(date);
 
         for (String valor : vTotal) {
             total += Double.parseDouble(valor);
         }
-        Cliente cli = ClienteDAO.getClientePorCPF(cpfCli);
-        int codCli = cli.getCodigo();
 
         try {
+            Cliente cli = ClienteDAO.getClientePorCPF(cpfCli);
+            int codCli = cli.getCodigo();
+
             VendaDAO.novaVenda(data, codCli, user, total);
-            resp.sendRedirect("/protegido/venda/venda.jsp");
+
+            Venda venda = VendaDAO.getCodVenda();
+            venda.getCodVenda();
+
+            for(int i = 0; i < vCod.length; i++) {
+                ItemVenda item = new ItemVenda();
+                item.setCodItemVenda(codCli);
+                ItemVendaDAO.inserirCliente(item);
+            }
+
+            resp.sendRedirect(req.getContextPath() + "/protegido/venda/venda.jsp");
         } catch (SQLException ex) {
-            
+
         }
-        
-        resp.sendRedirect(req.getContextPath()+"/protegido/venda/venda.jsp");
+
     }
 
 }

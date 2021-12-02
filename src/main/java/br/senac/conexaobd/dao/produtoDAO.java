@@ -40,7 +40,7 @@ public class produtoDAO {
         try {
             PreparedStatement ps = con.prepareStatement(query);
             ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
+            while (rs.next()) {             
                 Produto produto = new Produto();
                 String marca = rs.getString("marca");
                 String modelo = rs.getString("modelo");

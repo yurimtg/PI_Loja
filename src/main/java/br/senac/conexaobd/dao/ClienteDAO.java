@@ -105,7 +105,6 @@ public class ClienteDAO {
             Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return cliente;
-
     }
 
     public static boolean deletarCliente(String cpf) {
