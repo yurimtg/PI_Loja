@@ -52,6 +52,10 @@
         <servlet-name>CarrinhoServlet</servlet-name>
         <servlet-class>br.senac.servlet.CarrinhoServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>RelatorioServlet</servlet-name>
+        <servlet-class>br.senac.servlet.RelatorioServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ListarClienteServlet</servlet-name>
         <url-pattern>/cliente/ListarClienteServlet</url-pattern>
@@ -98,6 +102,11 @@
     <servlet-mapping>
         <servlet-name>CarrinhoServlet</servlet-name>
         <url-pattern>/CarrinhoServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RelatorioServlet</servlet-name>
+        <url-pattern>/relatorio/RelatorioServlet</url-pattern>
+        <url-pattern>/protegido/relatorio/RelatorioServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
