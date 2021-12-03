@@ -123,7 +123,7 @@ public class FuncionarioDAO {
         return ok;
     }
 
-    public static boolean atualizarFuncioanario(Funcionario funcionario) {
+    public static boolean atualizarFuncionario(Funcionario funcionario) {
         boolean ok = true;
         String query = "update funcionario set nome=?,email=?,telefone=?,salario=?,cargo=?,sexo=?,cpf=? where filial=?";
         Connection con = Conexao.getConexao();
@@ -164,6 +164,33 @@ public class FuncionarioDAO {
                 funcionario.setNome(nome);
                 funcionario.setLogin(login);
                 funcionario.setCargo(cargo);
+
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(FuncionarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return funcionario;
+}
+     public static Funcionario getFilial(String filial) throws SQLException {
+
+        Funcionario funcionario = null;
+        try {
+            Connection con = Conexao.getConexao();
+            String query = "select * from funcionarios where login =?";
+            PreparedStatement ps = con.prepareStatement(query);
+            ps.setString(1, filial);
+
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+
+                String nomeFilial = rs.getString("filial");
+                
+
+                funcionario = new Funcionario();
+
+                funcionario.setFilial(nomeFilial);
+               
 
             }
 

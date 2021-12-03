@@ -20,6 +20,8 @@ public class ListarClienteServlet extends HttpServlet {
         request.setAttribute("listaClientes", clientes);
 
         String url = "/protegido/cliente/listar.jsp";
+        
+        
 
         HttpSession sessao = request.getSession();
         sessao.setAttribute("clientes", clientes);

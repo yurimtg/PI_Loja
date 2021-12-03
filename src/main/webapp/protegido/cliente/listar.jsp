@@ -34,7 +34,9 @@
 
         </script>
     </head>
-    <body class="container">
+    <body class="container" style="background-image: url(../../img/tenis.jpeg);">
+        
+      
         <c:import url="../uteis/header.jsp"/>
         <table  class="table table-striped" style="width: 90%; margin: auto">
             <thead>

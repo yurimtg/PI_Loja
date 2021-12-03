@@ -12,4 +12,5 @@ public class Venda {
     private String dataVenda;
     private Double totalVenda;  
     private String pagamento;
+    private String filial;
 }

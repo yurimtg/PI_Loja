@@ -60,13 +60,20 @@
                     <input type="radio" name="sexo" id="rboFeminino" value="feminino"><br/>
                 </div>      <br/>
                  
-                <label>Filial:</label>
-                <input type="text" name="FilialFuncionário" class="form-control" style="width:30%"value="${funcionarioAtualizacao.filial}"/><br> 
+               
                 <label >Salario:</label>
                 <input type="text" name="salarioFuncionário" class="form-control" style="width: 40%; float: left; margin-right: 2%;" value="${funcionarioAtualizacao.salario}"/>
 
-                <label >Cargo:</label> 
-            
+                 <label>Filial</label>
+                  <select name="filial" id="filial" style="width: 30%; float: left; margin-right: 2%;">
+                  <option value="SP"> SP</option>
+                  <option value="RJ"> RJ</option>
+                  <option value="RS"> RS</option>
+                  </select>
+                
+                 </br>
+                 </br>
+                <label >Cargo:</label>  
                    <select name="cargoFuncionario" style="width: 30%">
                         <c:forEach var="cargo" items="${cargos}">
                         <option value="${cargo.cargo}">${cargo.codCargo}</option>

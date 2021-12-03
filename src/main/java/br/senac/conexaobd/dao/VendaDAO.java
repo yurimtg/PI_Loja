@@ -13,11 +13,11 @@ import java.util.logging.Logger;
 
 public class VendaDAO {
 
-    public static void novaVenda(String data, String cliente, String funcionario, Double total, String pagamento)
+    public static void novaVenda(String data, String cliente, String funcionario, Double total, String pagamento, String filial)
             throws SQLException {
 
-        String query = "insert into venda(data_venda,nomeCli,nomeFuncionario,valor_total,pagamento) "
-                + "values (?,?,?,?,?)";
+        String query = "insert into venda(data_venda,nomeCli,nomeFuncionario,valor_total,pagamento, filial) "
+                + "values (?,?,?,?,?,?)";
         Connection con = Conexao.getConexao();
         PreparedStatement ps;
         ps = con.prepareStatement(query);
@@ -27,6 +27,7 @@ public class VendaDAO {
         ps.setString(3, funcionario);
         ps.setDouble(4, total);
         ps.setString(5, pagamento);
+        ps.setString(6, filial);
         ps.execute();
 
     }
@@ -68,7 +69,8 @@ public class VendaDAO {
                 String nomeCli = rs.getString("nomeCli");
                 String nomeFuncionario = rs.getString("nomeFuncionario");
                 Double total = rs.getDouble("valor_total");
-                String pagamento = rs.getString("pagamento");             
+                String pagamento = rs.getString("pagamento");
+                String filial = rs.getNString("filial");
 
                 venda.setCodVenda(codVenda);
                 venda.setDataVenda(data);
@@ -76,6 +78,7 @@ public class VendaDAO {
                 venda.setNomeFuncionario(nomeFuncionario);
                 venda.setTotalVenda(total);
                 venda.setPagamento(pagamento);
+                venda.setFilial(filial);
            
                 vendas.add(venda);
             }

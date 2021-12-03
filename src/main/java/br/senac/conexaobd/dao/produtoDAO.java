@@ -15,8 +15,8 @@ public class produtoDAO {
 
     public static void inserirProduto(Produto produto) throws SQLException {
         boolean ok = true;
-        String query = "insert into produto(marca,modelo,estoque,tamanho,valor,genero)"
-                + "values (?,?,?,?,?,?)";
+        String query = "insert into produto(marca,modelo,estoque,tamanho,valor,genero,filial)"
+                + "values (?,?,?,?,?,?,?)";
         Connection con = Conexao.getConexao();
         PreparedStatement ps;
         ps = con.prepareStatement(query);
@@ -27,6 +27,7 @@ public class produtoDAO {
         ps.setInt(4, produto.getTamanho());
         ps.setDouble(5, produto.getValor());
         ps.setString(6, produto.getGenero());
+        ps.setString(7, produto.getFilial());
         
         ps.execute();
         
@@ -50,6 +51,7 @@ public class produtoDAO {
                 int estoque = rs.getInt("estoque");
                 int tamanho = rs.getInt("tamanho");
                 String genero = rs.getString("genero");
+                String filial = rs.getNString("filial");
 
                 produto.setMarca(marca);
                 produto.setModelo(modelo);
@@ -58,6 +60,7 @@ public class produtoDAO {
                 produto.setTamanho(tamanho);
                 produto.setCodProduto(cod);
                 produto.setGenero(genero);
+                produto.setFilial(filial);
 
             }
         } catch (SQLException ex) {
@@ -84,7 +87,7 @@ public class produtoDAO {
 
     public static boolean atualizarProduto(Produto produto) {
         boolean ok = true;
-        String query = "update produto set marca=?,modelo=?,valor=?,estoque=?,tamanho=?,genero=? where codProduto=?";
+        String query = "update produto set marca=?,modelo=?,valor=?,estoque=?,tamanho=?,genero=?, filial=? where codProduto=?";
         Connection con = Conexao.getConexao();
         try {
             PreparedStatement ps = con.prepareStatement(query);
@@ -96,6 +99,7 @@ public class produtoDAO {
             ps.setDouble(5, produto.getTamanho());
             ps.setString(6, produto.getGenero());
             ps.setInt(7, produto.getCodProduto());
+            ps.setString(8, produto.getFilial());
             ps.execute();
         } catch (SQLException ex) {
             Logger.getLogger(produtoDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -121,6 +125,7 @@ public class produtoDAO {
                     int tamanho = rs.getInt("tamanho");
                     int cod = rs.getInt("codProduto");
                     String genero = rs.getString("genero");
+                    String filial = rs.getString("filial");
                     
                     produto.setMarca(marca);
                     produto.setModelo(modelo);
@@ -129,6 +134,7 @@ public class produtoDAO {
                     produto.setTamanho(tamanho);
                     produto.setCodProduto(cod);
                     produto.setGenero(genero);
+                    produto.setFilial(filial);
                     
                     produtos.add(produto);
                 }

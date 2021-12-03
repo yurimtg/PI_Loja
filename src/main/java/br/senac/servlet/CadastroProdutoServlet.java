@@ -22,6 +22,7 @@ public class CadastroProdutoServlet extends HttpServlet {
         Double valor = Double.parseDouble(request.getParameter("valorProduto"));
         int estoque = Integer.parseInt(request.getParameter("estoqueProduto"));
         int tamanho = Integer.parseInt(request.getParameter("tamanhoProduto"));
+        String filial = request.getParameter("filial");
         int cod = 0;
         if(request.getParameter("codProduto") != null){cod = Integer.parseInt(request.getParameter("codProduto"));}
        
@@ -42,6 +43,7 @@ public class CadastroProdutoServlet extends HttpServlet {
         produto.setEstoque(estoque);
         produto.setTamanho(tamanho);
         produto.setCodProduto(cod);
+        produto.setFilial(filial);
 
         try {
 

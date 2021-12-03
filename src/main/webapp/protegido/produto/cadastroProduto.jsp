@@ -23,6 +23,8 @@
                 height: 35px;
                 font-size: 20px;
             }
+            
+         
         </style>
     </head>
     <body class="container" style="background-color: #f2f2f2;">
@@ -33,20 +35,19 @@
             <h3 style="text-align: center; margin-bottom: 30px;"> CADASTRO PRODUTO</h3>
 
             <form action="CadastroProdutoServlet" method="POST" class="card-title"> 
-
+                
+   
                 <c:if test="${not empty produtoAtualizacao}">
                     <input type="hidden" name="ope" value="1"/>      
                     <input type="hidden" name="codProduto" value="${produtoAtualizacao.codProduto}"/>  
                 </c:if>
                     
-               
-                
+      
                 <label >Marca:</label>
                 <input required type="text" name="marcaProduto" class="form-control" style="width: 40%; float: left; margin-right: 2%;" value="${produtoAtualizacao.marca}"/>
 
                 <label >Modelo:</label>
                 <input required type="text" name="modeloProduto" class="form-control" style="width: 35%" value="${produtoAtualizacao.modelo}" /><br/>
-
                
                 <div style="margin-top: 40px;">
                     <label>Genero:</label>
@@ -64,6 +65,15 @@
                              
                 <label >tamanho:</label>
                 <input required type="text" name="tamanhoProduto" class="form-control" style="width: 15%; float: left; margin-right: 2%;" value="${produtoAtualizacao.tamanho}"/>
+                
+                </br>
+                </br>
+                <label>Filial</label>
+                  <select name="filial" id="filial" style="width: 30%; float: left; margin-right: 2%;">
+                  <option value="SP">SP</option>
+                  <option value="RJ">RJ</option>
+                  <option value="RS">RS</option>
+                  </select>
                 
                 <button type="submit" id="btnEnviar">Enviar</button>
 

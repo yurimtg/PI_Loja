@@ -45,7 +45,7 @@ public class CadastroFuncionarioServlet extends HttpServlet {
 
         try {
             if ("1".equals(ope)) {
-                FuncionarioDAO.atualizarFuncioanario(funcionario);
+                FuncionarioDAO.atualizarFuncionario(funcionario);
             } else {
                 
                 FuncionarioDAO.inserirFuncionario(funcionario);

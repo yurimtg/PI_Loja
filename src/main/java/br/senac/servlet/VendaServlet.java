@@ -30,6 +30,7 @@ public class VendaServlet extends HttpServlet {
         String pagamento = req.getParameter("formaPagamento");
         String user = req.getParameter("usuario");
         Double total = 0d;
+        String filial = req.getParameter("filial");
 
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         Date date = new Date();
@@ -43,7 +44,7 @@ public class VendaServlet extends HttpServlet {
             Cliente cli = ClienteDAO.getClientePorCPF(cpfCli);
             String cliente = cli.getNome();
 
-            VendaDAO.novaVenda(data, cliente, user, total, pagamento);
+            VendaDAO.novaVenda(data, cliente, user, total, pagamento, filial);
 
             Venda venda = VendaDAO.getCodVenda();
             int codVenda = venda.getCodVenda();

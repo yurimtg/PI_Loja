@@ -28,15 +28,4 @@ public class Usuario {
 //        this.cargo = cargo;
 //    }
 
-    public boolean isGerente(){
-        return "gerente".equalsIgnoreCase(this.cargo);
-    }
-    
-    public boolean isVendedor(){
-        return "vendedor".equalsIgnoreCase(this.cargo);
-    }    
-    
-    public boolean idDiretor(){
-        return "diretor".equalsIgnoreCase(this.cargo);
-    }
 }
