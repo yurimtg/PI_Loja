@@ -11,12 +11,12 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Listar de Clientes</title>
         <script type="text/javascript">
-            
+
             var cpfRemocao;
             function confirmarRemocao(nome, cpf) {
                 cpfRemocao = cpf;
-                var confirmar = confirm("Deseja escluir o cliente: "+nome+ " do CPF: "+cpf);
-                if(confirmar){
+                var confirmar = confirm("Deseja escluir o cliente: " + nome + " do CPF: " + cpf);
+                if (confirmar) {
                     deletar();
                 }
             }
@@ -35,25 +35,33 @@
     </head>
     <body class="container">
         <c:import url="../uteis/header.jsp"/>
-        <table  class="table table-striped" style="width: 90%; margin: auto">
-            <thead>
-            <td>CPF</td><td>Nome</td><td>Email</td><td>Telefone</td><td>Salario</td><td>Cargo</td><td>Filial</td>
-        </thead>
-        <tbody>
-            <c:forEach var="funcionario" items="${listaFuncionario}">
-                <tr>
-                    <td>${funcionario.cpf}</td>
-                    <td>${funcionario.nome}</td>
-                    <td>${funcionario.email}</td>
-                    <td>${funcionario.telefone }</td>
-                    <td>${funcionario.salario}</td>
-                    <td>${funcionario.cargo}</td>
-                    <td>${funcionario.filial }</td>
-                    <td><a class="btn btn-link" href="CadastroFuncionarioServlet?cpfUsuario=${funcionario.cpf}&ope=1">Atualizar </a></td>
-                    <td><button onclick="confirmarRemocao('${funcionario.nome}', '${funcionario.cpf}')" class="btn btn-link">Deletar</button></td>
-                </tr>
-            </c:forEach>
-        </tbody>
-    </table>
-</body>
+
+        <div style="width: 90%; margin: auto">
+            <form form action="ListarFuncionarioServlet" method="POST" style="margin: 2% 0 2% 0">
+                <input type="text" name="nomeFuncionario" style="width: 25%">
+                <button type="submit" id="btnBuscarFuncionario">Buscar</button>
+            </form>
+
+            <table  class="table table-striped">
+                <thead>
+                <td>CPF</td><td>Nome</td><td>Email</td><td>Telefone</td><td>Salario</td><td>Cargo</td><td>Filial</td>
+                </thead>
+                <tbody>
+                    <c:forEach var="funcionario" items="${listaFuncionario}">
+                        <tr>
+                            <td>${funcionario.cpf}</td>
+                            <td>${funcionario.nome}</td>
+                            <td>${funcionario.email}</td>
+                            <td>${funcionario.telefone }</td>
+                            <td>${funcionario.salario}</td>
+                            <td>${funcionario.cargo}</td>
+                            <td>${funcionario.filial }</td>
+                            <td><a class="btn btn-link" href="CadastroFuncionarioServlet?cpfUsuario=${funcionario.cpf}&ope=1">Atualizar </a></td>
+                            <td><button onclick="confirmarRemocao('${funcionario.nome}', '${funcionario.cpf}')" class="btn btn-link">Deletar</button></td>
+                        </tr>
+                    </c:forEach>
+                </tbody>
+            </table>
+        </div>
+    </body>
 </html>

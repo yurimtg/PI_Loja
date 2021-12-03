@@ -89,6 +89,14 @@
 
                 $('.btnCarrinho').click(function () {
                     $(".carrinho").toggle();
+                    $(".itemVenda").toggle();
+                    
+                });
+                
+                $('.btnBack').click(function () {
+                    $(".carrinho").toggle();
+                    $(".itemVenda").toggle();
+                    
                 });
 //---------------------------------------------------------------------------------------------------------------------------
             });
@@ -104,8 +112,9 @@
                 display: block;
             }
         </style>
+        
         <div  style="width: 90%; margin: auto;">     
-            <div class="itemVenda">
+            <div class="itemVenda" style="display: block;">
                 <button class="btnCarrinho" style="margin: 2% 0 0 90% ">
                     <img src="${pageContext.request.contextPath}/img/carrinho.png" width="30px" height="25px" alt="alt"/>
                     <label id="lblCarrinho">0</label>
@@ -135,6 +144,11 @@
             </div>
 
             <div class="carrinho">
+                
+                <button class="btnBack" style="margin: 2% 0 0 90% ">
+                    <img src="${pageContext.request.contextPath}/img/back.png" width="30px" height="25px" alt="alt"/>
+                </button><br/>
+                
                 <h2 style="margin-top: 100px; text-align: center">CARRINHO</h2>
                 <table id="tblCarrinho" class="table table-striped">
                     <thead>

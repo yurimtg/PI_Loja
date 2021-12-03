@@ -29,4 +29,21 @@ public class ListarProdutoServlet extends HttpServlet {
         request.getRequestDispatcher(url).forward(request, response);
 
     }
+    
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        String nome = request.getParameter("nomeProduto");
+        nome += "%";
+        List<Produto> produto = produtoDAO.getProdutoPorModelo(nome);
+        request.setAttribute("listaProduto", produto);
+
+        String url = "/protegido/venda/venda.jsp";
+
+        HttpSession sessao = request.getSession();
+        sessao.setAttribute("Produtos", produto);
+
+        request.getRequestDispatcher(url).forward(request, response);
+    }
 }
+

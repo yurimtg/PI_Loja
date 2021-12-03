@@ -13,6 +13,44 @@ import java.util.logging.Logger;
 
 public class FuncionarioDAO {
     
+      public static List <Funcionario> getFuncionarioPorNome(String nomeCli) {
+        List<Funcionario> funcionarios = new ArrayList<>();
+        String query = "select * from funcionario where nome like ?";
+        
+        Connection con = Conexao.getConexao();
+        try {
+            PreparedStatement ps = con.prepareStatement(query);
+            ps.setString(1, nomeCli);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+               Funcionario funcionario = new Funcionario();
+                
+                String nome = rs.getString("nome");
+                String cpf = rs.getString("cpf");
+                String email = rs.getString("email");
+                String telefone = rs.getString("telefone");
+                Double salario = rs.getDouble("salario");
+                String cargo = rs.getString("cargo");
+                String sexo = rs.getString("sexo");
+                int cod = rs.getInt("codFuncionario");
+
+                funcionario.setNome(nome);
+                funcionario.setEmail(email);
+                funcionario.setCpf(cpf);
+                funcionario.setTelefone(telefone);
+                funcionario.setSalario(salario);
+                funcionario.setCargo(cargo);
+                funcionario.setSexo(sexo);
+                funcionario.setCodFuncionario(cod);
+                
+                funcionarios.add(funcionario);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return funcionarios;
+    }  
+    
       public static void inserirFuncionario(Funcionario funcionario) throws SQLException {
         boolean ok = true;
         String query = "insert into funcionario(nome,cpf,email,sexo,telefone,salario,cargo,filial)"
@@ -199,6 +237,7 @@ public class FuncionarioDAO {
         }
         return funcionario;
 }
+     
 }
 
     
