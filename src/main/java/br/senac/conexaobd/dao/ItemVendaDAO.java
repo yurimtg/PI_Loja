@@ -46,7 +46,7 @@ public class ItemVendaDAO {
                 venda.setCodVenda(cod);
             }
         } catch (SQLException ex) {
-            Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ItemVendaDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return venda;
     }
@@ -80,7 +80,7 @@ public class ItemVendaDAO {
                 itens.add(item);
             }
         } catch (SQLException ex) {
-            Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ItemVendaDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return itens;
     }

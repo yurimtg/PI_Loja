@@ -143,5 +143,43 @@ public class ClienteDAO {
         }
         return ok;
     }
+    
+     public static List <Cliente> getClientePorNome(String nomeCli) {
+        List<Cliente> clientes = new ArrayList<>();
+        String query = "select * from cliente where nome like ?";
+        
+        Connection con = Conexao.getConexao();
+        try {
+            PreparedStatement ps = con.prepareStatement(query);
+            ps.setString(1, nomeCli);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Cliente cliente = new Cliente();
+                String nome = rs.getString("nome");
+                String email = rs.getString("email");
+                String telefone = rs.getString("telefone");
+                String endereco = rs.getString("enderecoLogradouro");
+                int endNumero = rs.getInt("enderecoNumero");
+                String complemento = rs.getString("enderecoComplemento");
+                String sexo = rs.getString("sexo");
+                int cod = rs.getInt("codigo");
+                
+                cliente.setNome(nome);
+                cliente.setEmail(email);
+                cliente.setCpf(nome);
+                cliente.setTelefone(telefone);
+                cliente.setEnderecoLogradouro(endereco);
+                cliente.setEnderecoNumero(endNumero);
+                cliente.setEnderecoComplemento(complemento);
+                cliente.setSexo(sexo);
+                cliente.setCodigo(cod);
+                
+                clientes.add(cliente);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return clientes;
+    }
 
 }

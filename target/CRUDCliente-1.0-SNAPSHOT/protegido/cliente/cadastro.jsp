@@ -25,12 +25,12 @@
             }
         </style>
     </head>
-    <body class="container" style="background-color: #f2f2f2;">
+    <body class="container" style="background-color: #f2f2f2; color: white">
 
         <c:import url="../uteis/header.jsp"/>
 
 
-        <fieldset style="background-color: white; width: 90%; margin: auto; border: none; padding: 3%; border-radius: 20px; margin-top: 30px;">
+        <fieldset style=" width: 90%; margin: auto; border: none; padding: 3%; border-radius: 20px; margin-top: 30px;">
             <h3 style="text-align: center; margin-bottom: 30px;"> CADASTRO CLIENTE</h3>
 
             <form action="CadastroClienteServlet" method="POST" class="card-title"> 
@@ -55,7 +55,7 @@
                 <label>Telefone:</label>
                 <input type="text" name="telefoneCliente" class="form-control" placeholder="(99)99999-9999" style="width: 35%;float: left; margin-right: 2%;" value="${clienteAtualizacao.telefone}"/>
                 <br/>
-                <div style="margin-top: 40px;">
+                <div style="margin-top: 40px; width: 220px;">
                     <label>Sexo:</label>
                     <strong>M:</strong>
                     <input type="radio" name="sexo" id="rboMaculino" checked="true" value="masculino">

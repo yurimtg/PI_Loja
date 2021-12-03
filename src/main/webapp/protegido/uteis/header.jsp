@@ -23,7 +23,7 @@
         }
         
     .container{
-        background-image: url(../../img/tenis.jpeg);
+        background-image: url(${pageContext.request.contextPath}/img/tenis.jpeg);
                background-size: cover;
                background-repeat: no-repeat;
                background-size: cover;
@@ -31,8 +31,7 @@
                height: 100vh;
                padding: 0;
                text-align: center;
-             
-       
+
             }
     </style>
     <body class="container">
@@ -51,7 +50,7 @@
                     <a href="${pageContext.request.contextPath}/protegido/produto/cadastroProduto.jsp" class="btn btn-primary">Produto</a><br/> 
                     </c:if:>
                     <c:if test="${sessionScope.cargo.diretor}" >
-                   <a href="${pageContext.request.contextPath}/protegido/funcionario/cadastroFuncionario.jsp" class="btn btn-primary">Funcionario</a>
+                   <a href="${pageContext.request.contextPath}/CargoServlet" class="btn btn-primary">Funcionario</a>
                     </c:if>
                 </div>
                

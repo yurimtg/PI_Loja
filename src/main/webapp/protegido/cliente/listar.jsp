@@ -12,12 +12,12 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Listar de Clientes</title>
         <script type="text/javascript">
-            
+
             var cpfRemocao;
             function confirmarRemocao(nome, cpf) {
                 cpfRemocao = cpf;
-                var confirmar = confirm("Deseja escluir o cliente: "+nome+ " do CPF: "+cpf);
-                if(confirmar){
+                var confirmar = confirm("Deseja escluir o cliente: " + nome + " do CPF: " + cpf);
+                if (confirmar) {
                     deletar();
                 }
             }
@@ -30,32 +30,38 @@
                 }).fail(function () {
                     alert("Falha");
                 });
-            }
-
+            }           
         </script>
     </head>
     <body class="container">
         <c:import url="../uteis/header.jsp"/>
-        <table  class="table table-striped" style="width: 90%; margin: auto">
-            <thead>
-            <td>CPF</td><td>Nome</td><td>Email</td><td>Telefone</td><td>Endereço</td><td>Nº</td><td>sexo</td>
-        </thead>
-        <tbody>
-            <c:forEach var="cliente" items="${listaClientes}">
-                <tr>
-                    <td>${cliente.cpf}</td>
-                    <td>${cliente.nome}</td>
-                    <td>${cliente.email}</td>
-                    <td>${cliente.telefone }</td>
-                    <td>${cliente.enderecoLogradouro}</td>
-                    <td>${cliente.enderecoNumero}</td>
-                    <td>${cliente.sexo }</td>
-                    <td><a class="btn btn-link" href="CadastroClienteServlet?cpfUsuario=${cliente.cpf}&ope=1">Atualizar </a></td>
-                    <td><button onclick="confirmarRemocao('${cliente.nome}', '${cliente.cpf}')" class="btn btn-link">Deletar</button></td>
-                </tr>
-            </c:forEach>
-        </tbody>
-    </table>
 
-</body>
+        <div style="width: 90%; margin: auto">
+            <form form action="ListarClienteServlet" method="POST" style="margin: 2% 0 2% 0">
+                <input type="text" name="nomeCli" style="width: 25%">
+                <button type="submit" id="btnBuscar">Buscar</button>
+            </form>
+
+            <table  class="table table-striped">
+                <thead>
+                <td>CPF</td><td>Nome</td><td>Email</td><td>Telefone</td><td>Endereço</td><td>Nº</td><td>sexo</td>
+                </thead>
+                <tbody>
+                    <c:forEach var="cliente" items="${listaClientes}">
+                        <tr>
+                            <td>${cliente.cpf}</td>
+                            <td>${cliente.nome}</td>
+                            <td>${cliente.email}</td>
+                            <td>${cliente.telefone }</td>
+                            <td>${cliente.enderecoLogradouro}</td>
+                            <td>${cliente.enderecoNumero}</td>
+                            <td>${cliente.sexo }</td>
+                            <td><a class="btn btn-link" href="CadastroClienteServlet?cpfUsuario=${cliente.cpf}&ope=1">Atualizar </a></td>
+                            <td><button onclick="confirmarRemocao('${cliente.nome}', '${cliente.cpf}')" class="btn btn-link">Deletar</button></td>
+                        </tr>
+                    </c:forEach>
+                </tbody>
+            </table>
+        </div>
+    </body>
 </html>
