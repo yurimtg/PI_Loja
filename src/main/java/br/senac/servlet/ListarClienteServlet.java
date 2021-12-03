@@ -31,4 +31,20 @@ public class ListarClienteServlet extends HttpServlet {
 
     }
 
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        String nome = request.getParameter("nomeCli");
+        nome += "%";
+        List<Cliente> clientes = ClienteDAO.getClientePorNome(nome);
+        request.setAttribute("listaClientes", clientes);
+
+        String url = "/protegido/cliente/listar.jsp";
+
+        HttpSession sessao = request.getSession();
+        sessao.setAttribute("clientes", clientes);
+
+
+        request.getRequestDispatcher(url).forward(request, response);
+    }
 }
