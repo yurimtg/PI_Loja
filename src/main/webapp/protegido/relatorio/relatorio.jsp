@@ -11,6 +11,21 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Relatório Sintetico</title>
     </head>
+    <style>
+        .container{
+        
+        background-image: url(../../img/tenis.jpeg);
+               background-size: cover;
+               background-repeat: no-repeat;
+               background-size: cover;
+               width: 100vw;
+               height: 100vh;
+               padding: 0;
+               text-align: center;
+               color: white
+        }
+    </style>
+    
     <body class="container">
 
         <c:import url="../uteis/header.jsp"/> 

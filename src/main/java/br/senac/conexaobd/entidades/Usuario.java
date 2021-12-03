@@ -29,14 +29,14 @@ public class Usuario {
 //    }
 
     public boolean isGerente(){
-        return this.cargo.equalsIgnoreCase("gerente");
+        return "gerente".equalsIgnoreCase(this.cargo);
     }
     
     public boolean isVendedor(){
-        return this.cargo.equalsIgnoreCase("vendedor");
+        return "vendedor".equalsIgnoreCase(this.cargo);
     }    
     
-    public boolean isAdmin(){
-        return this.cargo.equalsIgnoreCase("admin");
+    public boolean idDiretor(){
+        return "diretor".equalsIgnoreCase(this.cargo);
     }
 }

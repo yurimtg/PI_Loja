@@ -31,10 +31,17 @@
             height: 40px;
             margin-left: 20%;
         }
-        .container{
-            display: block;       
-            padding: 0;         
-        }
+         .container{
+            background-image: url(img/tenis.jpeg);
+                 background-size: cover;
+                background-repeat: no-repeat;
+                background-size: cover;
+                width: 100vw;
+                height: 100vh;
+                color:white;
+             
+             
+                
 
     </style>
     <title>JSP Page</title>
@@ -62,6 +69,4 @@
     </form>
 
 </body>
-
-
 

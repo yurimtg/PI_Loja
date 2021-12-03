@@ -61,15 +61,12 @@
                 </div>      <br/>
                  
                 <label>Filial:</label>
-                <input type="text" name="FilialFuncionário" class="form-control" style="width:30%"value="${funcionarioAtualizacao.filial}"/> 
+                <input type="text" name="FilialFuncionário" class="form-control" style="width:30%"value="${funcionarioAtualizacao.filial}"/><br> 
                 <label >Salario:</label>
                 <input type="text" name="salarioFuncionário" class="form-control" style="width: 40%; float: left; margin-right: 2%;" value="${funcionarioAtualizacao.salario}"/>
 
                 <label >Cargo:</label> 
-                <input type="text" name="cargoFuncionário" class="form-control" style="width: 30%"value="${funcionarioAtualizacao.cargo}" /><br/>
-
-                
-               
+            
                    <select name="cargoFuncionario" style="width: 30%">
                         <c:forEach var="cargo" items="${cargos}">
                         <option value="${cargo.cargo}">${cargo.codCargo}</option>

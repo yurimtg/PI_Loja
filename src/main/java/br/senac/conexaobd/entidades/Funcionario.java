@@ -18,4 +18,16 @@ public class Funcionario {
     private int codFuncionario;
     private String login;   
     private String filial;
+    
+    public boolean isGerente(){
+        return "gerente".equalsIgnoreCase(this.cargo);
+    }
+    
+    public boolean isVendedor(){
+        return "vendedor".equalsIgnoreCase(this.cargo);
+    }    
+    
+    public boolean isDiretor(){
+        return "diretor".equalsIgnoreCase(this.cargo);
+    }
 }
