@@ -49,7 +49,7 @@
 
 
                 });
-                //-----------------------------------------------------------------------------------------------------------------               
+//-----------------------------------------------------------------------------------------------------------------               
                 $('.qtd').dblclick(function () {
 
                     var vInicial = $(this).text();
@@ -76,7 +76,7 @@
                     }
 
 
-                    var url = "${pageContext.request.contextPath}/venda/VendaServlet?codigo=" + codigo +"&valor=" + valor + "&qtd=" + qtd + "&total=" + total+"&cpfCli="+$('#cpfCli').val()+"&formaPagamento="+pagamento+"&modelo="+modelo+"&usuario="+$("#hdnUsuario").val();
+                    var url = "${pageContext.request.contextPath}/venda/VendaServlet?codigo=" + codigo + "&valor=" + valor + "&qtd=" + qtd + "&total=" + total + "&cpfCli=" + $('#cpfCli').val() + "&formaPagamento=" + pagamento + "&modelo=" + modelo + "&usuario=" + $("#hdnUsuario").val();
                     $('#btnCompra').prop("href", url);
 
                     $.ajax(url).done(function () {
@@ -104,71 +104,74 @@
                 display: block;
             }
         </style>
-        <div class="itemVenda">
-            <button class="btnCarrinho" style="margin: 2% 0 0 90% ">
-                <img src="${pageContext.request.contextPath}/img/carrinho.png" width="30px" height="25px" alt="alt"/>
-                <label id="lblCarrinho">0</label>
-            </button><br/>
-            <h2 style="margin-top: 20px; text-align: center">ITENS VENDA</h2>
+        <div  style="width: 90%; margin: auto;">     
+            <div class="itemVenda">
+                <button class="btnCarrinho" style="margin: 2% 0 0 90% ">
+                    <img src="${pageContext.request.contextPath}/img/carrinho.png" width="30px" height="25px" alt="alt"/>
+                    <label id="lblCarrinho">0</label>
+                </button><br/>
 
-            <table id="tblVenda" name="venda" class="table table-striped" style="width: 90%; margin: auto">
-                <thead>
-                <td>Código</td><td>Marca</td><td>Modelo</td><td>Valor</td><td>Estoque</td><td>Tamanho</td><td style="width: 15%;">QTD</td><td></td>
-                </thead>
-                <tbody>
-                    <c:forEach var="produto" items="${sessionScope.listaProduto}">
+                <h2 style="margin-top: 20px; text-align: center">ITENS VENDA</h2>
+
+                <table id="tblVenda" name="venda" class="table table-striped">
+                    <thead>
+                    <td>Código</td><td>Marca</td><td>Modelo</td><td>Valor</td><td>Estoque</td><td>Tamanho</td><td style="width: 15%;">QTD</td><td></td>
+                    </thead>
+                    <tbody>
+                        <c:forEach var="produto" items="${sessionScope.listaProduto}">
+                            <tr>
+                                <td>${produto.codProduto}</td>
+                                <td>${produto.marca}</td>
+                                <td>${produto.modelo}</td>
+                                <td>${produto.valor}</td>
+                                <td>${produto.estoque}</td>
+                                <td>${produto.tamanho}</td>
+                                <td class="qtd">00</td>    
+                                <td><button  class="btnADD">Adicionar</button></td> 
+                            </tr>
+                        </c:forEach>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="carrinho">
+                <h2 style="margin-top: 100px; text-align: center">CARRINHO</h2>
+                <table id="tblCarrinho" class="table table-striped">
+                    <thead>
                         <tr>
-                            <td>${produto.codProduto}</td>
-                            <td>${produto.marca}</td>
-                            <td>${produto.modelo}</td>
-                            <td>${produto.valor}</td>
-                            <td>${produto.estoque}</td>
-                            <td>${produto.tamanho}</td>
-                            <td class="qtd">00</td>    
-                            <td><button  class="btnADD">Adicionar</button></td> 
+                            <td style="width: 15%">ID</td>
+                            <td style="width: 40%">PRODUTO</td>
+                            <td style="width: 15%">VALOR</td>
+                            <td style="width: 15%">QTD</td>
+                            <td style="width: 15%">TOTAL</td>
                         </tr>
+                    </thead>
+                    <tbody>
+                        <c:forEach var="carrinhos" items="${sessionScope.carrinhos}">
+                        <td style="width: 15%">${carrinhos.CodProduto}</td>
+                        <td style="width: 40%">${carrinhos.modelo}sessionScope</td>
+                        <td style="width: 15%">${carrinhos.valor}</td>
+                        <td style="width: 15%">${carrinhos.qtd}</td>
+                        <td style="width: 15%">${carrinhos.total}</td>
                     </c:forEach>
-                </tbody>
-            </table>
-        </div>
+                    </tbody>
+                </table><br/>
 
-        <div class="carrinho">
-            <h2 style="margin-top: 100px; text-align: center">CARRINHO</h2>
-            <table id="tblCarrinho" class="table table-striped" style="width: 90%; margin: auto;">
-                <thead>
-                    <tr>
-                        <td style="width: 15%">ID</td>
-                        <td style="width: 40%">PRODUTO</td>
-                        <td style="width: 15%">VALOR</td>
-                        <td style="width: 15%">QTD</td>
-                        <td style="width: 15%">TOTAL</td>
-                    </tr>
-                </thead>
-                <tbody>
-                    <c:forEach var="carrinhos" items="${sessionScope.carrinhos}">
-                    <td style="width: 15%">${carrinhos.CodProduto}</td>
-                    <td style="width: 40%">${carrinhos.modelo}sessionScope</td>
-                    <td style="width: 15%">${carrinhos.valor}</td>
-                    <td style="width: 15%">${carrinhos.qtd}</td>
-                    <td style="width: 15%">${carrinhos.total}</td>
-                </c:forEach>
-                </tbody>
-            </table><br/>
+                Total da Compra:<label id="lblTotal">0</label></br>
 
-            Total da Compra:<label></label></br>
-
-            <select id="formaPagamanto" style="width: 20%">
+                <select id="formaPagamanto" style="width: 20%">
                     <option value="cartao">Debito/Credito</option>
                     <option value="CartaoLoja">Cartão da Loja</option>
                     <option value="Dinheiro">Dinheiro</option>
-            </select>
+                </select>
 
-            Informe o CPF do Cliete.
-            <input type="text" id="cpfCli">
-            <div style="text-align: center; margin-top: 50px;" >               
-                <button id="btnCompra">COMPRAR</button> 
-            </div>   
+                Informe o CPF do Cliete.
+                <input type="text" id="cpfCli">
+                <div style="text-align: center; margin-top: 50px;" >               
+                    <button id="btnCompra">COMPRAR</button> 
+                </div>   
+            </div>
+            <input type="hidden" id="hdnUsuario" value="${sessionScope.usuario.usuario}">
         </div>
-                <input type="hidden" id="hdnUsuario" value="${sessionScope.usuario.usuario}">
     </body>
 </html>

@@ -7,64 +7,62 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-     <head>
+    <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Relatório</title>
+        <title>Relatório Sintetico</title>
     </head>
-   <body class="container">
-             
+    <body class="container">
+
         <c:import url="../uteis/header.jsp"/> 
-       
-        
-        <div id="alerta" class="alert alert-success" role="alert" style="display:none">
-          Busca feita com sucesso!
+
+        <div style="width: 90%; margin: auto;">
+            <form action="RelatorioServlet" method="POST" >
+                <label id="dataini">Data Inicial:</label> <input name="dataIni" type="text">
+                <label id="dataFin">Data Inicial:</label> <input name="dataFin" type="text">
+
+                <button type="submit" class="btn btn-secondary">buscar</button>
+            </form><br/>
+
+            <h1>Relatório Sintetico</h1>
+
+            <table  class="table">
+                <thead>
+                <td>Cod</td><td>Cliente</td><td>Vendedor</td><td>Total</td><td>Data Venda</td><td>Pagamento</td>
+
+
+                </thead>
+                <tbody>
+                    <c:forEach var="venda" items="${ListaVenda}">
+                        <tr>
+                            <td>${venda.codVenda}</td>
+                            <td>${venda.nomeCli}</td>
+                            <td>${venda.nomeFuncionario}</td>
+                            <td>${venda.totalVenda}</td>
+                            <td>${venda.dataVenda}</td>
+                            <td>${venda.pagamento}</td>
+                            <td><a class="btn btn-link" href="RelatorioServlet?codVenda=${venda.codVenda}">Analitico </a></td>
+                        </tr>
+                    </c:forEach>
+                </tbody>
+            </table>
+
+            <h1>Relatório Analitico</h1>
+            <table  class="table">
+                <thead>
+                <td>Cod</td><td>Produto</td><td>QTD</td><td>Preço un</td><td>Subtotal</td>
+                </thead>
+                <tbody>
+                    <c:forEach var="item" items="${listaItens}">
+                        <tr>
+                            <td>${item.codItemVenda}</td>
+                            <td>${item.produto}</td>
+                            <td>${item.qtd}</td>
+                            <td>${item.precoUnitario}</td>
+                            <td>${item.subTotal}</td>      
+                        </tr>
+                    </c:forEach>
+                </tbody>
+            </table>
         </div>
-        
-        
-        <form action="RelatorioServlet" method="POST" >
-            <label id="dataini">Data Inicial:</label> <input name="dataIni" type="text">
-            <label id="dataFin">Data Inicial:</label> <input name="dataFin" type="text">
-            
-            <button type="submit" class="btn btn-secondary">buscar</button>
-        </form><br/>
-        
-        <h1>Relatório</h1>
-
-        <table  class="table">
-            <thead>
-            <td>Nome</td><td>CPF</td><td>Data</td><td>Valor</td>
-           
-            
-        </thead>
-        <tbody>
-            <c:forEach var="cliente" items="${listaClientes}">
-                <tr>
-                    <div  class="form-group">
-                    <label>Nome</label>
-                    <input type="text" name="nomeCliente" value="${listaVendas}"
-                       required class="form-control"/><br/> 
-                    </div>
-                    <div class="form-grup">
-                    <label>Data</label>
-                    <input type="text" name="dataCompra" value="${listaVendas}"
-                       required class="form-control"/><br/> 
-                   </div>
-                    <div class="form-grup">
-                   <label>CPF</label>
-                    <input type="text" name="CpfCliente" value="${listaVendas}"
-                       required class="form-control"/><br/> 
-                    </div>
-                    <div class="form-grup">
-                   <label>Valor Total</label>
-                    <input type="text" name="valorTotal" value="${listaVendas}"
-                       required class="form-control"/><br/> 
-                    </div>
-                    <td><a href="BuscaClienteServlet?cpfUsuario=${cliente.cpf}&ope=1" >Buscar</a></td>
-                    <td><button onclick="confirmarBusca('${cliente.nome}')" class="btn btn-link">Buscar</button></td>
-                </tr>
-            </c:forEach>
-        </tbody>
-    </table>
-
     </body>
 </html>

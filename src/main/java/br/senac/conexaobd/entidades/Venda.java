@@ -7,8 +7,9 @@ import lombok.Setter;
 
 public class Venda {
     private int codVenda;
-    private int fkCli;
-    private int fkFuncionario;
+    private String nomeCli;
+    private String nomeFuncionario;
     private String dataVenda;
-    private Double totalVenda;   
+    private Double totalVenda;  
+    private String pagamento;
 }

@@ -6,6 +6,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -47,5 +49,39 @@ public class VendaDAO {
             Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return venda;
+    }
+    
+    public static List<Venda> getVendas(String dataIni, String dataFin) {
+        List<Venda> vendas = new ArrayList<>();
+        String query = "SELECT * FROM VENDA WHERE DATA_VENDA > ? AND DATA_VENDA < ?";
+
+        Connection con = Conexao.getConexao();
+        try {
+            PreparedStatement ps = con.prepareStatement(query);
+             ps.setString(1, dataIni);
+             ps.setString(2, dataFin);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Venda venda = new Venda();
+                int codVenda = rs.getInt("codVenda");
+                String data = rs.getString("data_venda");
+                String nomeCli = rs.getString("nomeCli");
+                String nomeFuncionario = rs.getString("nomeFuncionario");
+                Double total = rs.getDouble("valor_total");
+                String pagamento = rs.getString("pagamento");             
+
+                venda.setCodVenda(codVenda);
+                venda.setDataVenda(data);
+                venda.setNomeCli(nomeCli);
+                venda.setNomeFuncionario(nomeFuncionario);
+                venda.setTotalVenda(total);
+                venda.setPagamento(pagamento);
+           
+                vendas.add(venda);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return vendas;
     }
 }
