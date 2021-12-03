@@ -8,11 +8,14 @@ import lombok.Setter;
 
 public class ItemVenda {
 
+    public ItemVenda() {
+    }
+    
     private int codItemVenda;
     private int qtd;
     private Double precoUnitario;
     private Double subTotal;
-    private int fkCodProduto;
+    private String produto;
     private int fkCodVenda;
 
 }

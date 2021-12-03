@@ -6,7 +6,7 @@ import lombok.Setter;
 @Setter
 
 public class Venda {
-    private int codVenda =0;
+    private int codVenda;
     private int fkCli;
     private int fkFuncionario;
     private String dataVenda;

@@ -15,19 +15,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+
 public class VendaServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         String vCod[] = req.getParameter("codigo").split(",");
-        String vModelo[] = req.getParameter("modelo").split(",");
         String vValor[] = req.getParameter("valor").split(",");
         String vQtd[] = req.getParameter("qtd").split(",");
         String vTotal[] = req.getParameter("total").split(",");
+        String vModelo[] = req.getParameter("modelo").split(",");
         String cpfCli = req.getParameter("cpfCli");
         String pagamento = req.getParameter("formaPagamento");
-        int user = Integer.parseInt(req.getParameter("usuario"));
+        String user = req.getParameter("usuario");
         Double total = 0d;
 
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
@@ -40,21 +41,21 @@ public class VendaServlet extends HttpServlet {
 
         try {
             Cliente cli = ClienteDAO.getClientePorCPF(cpfCli);
-            int codCli = cli.getCodigo();
+            String cliente = cli.getNome();
 
-            VendaDAO.novaVenda(data, codCli, user, total);
+            VendaDAO.novaVenda(data, cliente, user, total, pagamento);
 
             Venda venda = VendaDAO.getCodVenda();
             int codVenda = venda.getCodVenda();
 
-            for(int i = 0; i < vCod.length; i++) {
+            for (int i = 0; i < vCod.length; i++) {
                 ItemVenda item = new ItemVenda();
-                item.setCodItemVenda(codCli);
-                item.setFkCodProduto(Integer.parseInt(vCod[i]));
+                item.setProduto(vModelo[i]);
+                item.setCodItemVenda(Integer.parseInt(vCod[i]));
                 item.setFkCodVenda(codVenda);
                 item.setPrecoUnitario(Double.parseDouble(vValor[i]));
                 item.setQtd(Integer.parseInt(vQtd[i]));
-                item.setSubTotal(Double.parseDouble(vValor[i])*Integer.parseInt(vQtd[i]));
+                item.setSubTotal(Double.parseDouble(vValor[i]) * Integer.parseInt(vQtd[i]));
                 ItemVendaDAO.inserirItemVenda(item);
             }
 

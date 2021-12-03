@@ -34,36 +34,32 @@
         .container{
             display: block;       
             padding: 0;         
-            background: #99ccff; 
-          
-       
         }
-        
+
     </style>
     <title>JSP Page</title>
 </head>
 
 <body class="container">
-    
-    
-       <c:if test="${param.loginInvalido != null}">
-            <div class="alert alert-danger" role="alert">
-                Usuário/Senha inválidos
-            </div>
-        </c:if>
+
+
+    <c:if test="${param.loginInvalido != null}">
+        <div class="alert alert-danger" role="alert">
+            Usuário/Senha inválidos
+        </div>
+    </c:if>
     <form method="post" action="LoginServlet" class="formLogin">
-            <h2 style="color: red"><c:out value="${msgErro}"/></h2>
+        <h2 style="color: red"><c:out value="${msgErro}"/></h2>
 
-            <label>LOGIN:</label><br/>
-            <input type="text" name="usuario" class="input-padrao"><br/>
-            
-            <label>SENHA:</label><br/>
-            <input type="password" name="senha" class="input-padrao"><br/>
- 
-            <button type="submit"  class="btnLogar">LOGAR</button>
+        <label>LOGIN:</label><br/>
+        <input type="text" name="usuario" class="input-padrao"><br/>
 
-       
-            </form>
+        <label>SENHA:</label><br/>
+        <input type="password" name="senha" class="input-padrao"><br/>
+
+        <button type="submit"  class="btnLogar">LOGAR</button>
+
+    </form>
 
 </body>
 

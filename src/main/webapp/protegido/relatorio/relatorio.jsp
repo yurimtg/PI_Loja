@@ -12,7 +12,16 @@
         <title>Relatório</title>
     </head>
    <body class="container">
-        <c:import url="../uteis/header.jsp"/>
+             
+        <c:import url="../uteis/header.jsp"/> 
+       
+       <form action="RelatorioServlet" method="POST" >
+            <label id="dataini">Data Inicial:</label> <input name="dataIni" type="text">
+            <label id="dataFin">Data Inicial:</label> <input name="dataFin" type="text">
+            
+            <button type="submit" class="btn btn-secondary">buscar</button>
+        </form><br/>
+
         <div id="alerta" class="alert alert-success" role="alert" style="display:none">
           Busca feita com sucesso!
         </div>
@@ -53,8 +62,6 @@
             </c:forEach>
         </tbody>
     </table>
-         <button type="button" class="btn btn-secondary" onclick="fecharModal()">buscar</button>
-        
 
     </body>
 </html>

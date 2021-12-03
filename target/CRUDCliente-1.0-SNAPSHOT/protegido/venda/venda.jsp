@@ -76,7 +76,7 @@
                     }
 
 
-                    var url = "${pageContext.request.contextPath}/venda/VendaServlet?codigo=" + codigo + "&modelo=" + modelo + "&valor=" + valor + "&qtd=" + qtd + "&total=" + total+"&cpfCli="+$('#cpfCli').val()+"&formaPagamento="+pagamento+"&usuario="+$('#hndUsuario').val();
+                    var url = "${pageContext.request.contextPath}/venda/VendaServlet?codigo=" + codigo +"&valor=" + valor + "&qtd=" + qtd + "&total=" + total+"&cpfCli="+$('#cpfCli').val()+"&formaPagamento="+pagamento+"&modelo="+modelo+"&usuario="+$("#hdnUsuario").val();
                     $('#btnCompra').prop("href", url);
 
                     $.ajax(url).done(function () {
@@ -169,6 +169,6 @@
                 <button id="btnCompra">COMPRAR</button> 
             </div>   
         </div>
-                <input type="hidden" id="hndUsuario" name="custId" value="${sessionScope.usuario.fkCodFuncionario}"/>
+                <input type="hidden" id="hdnUsuario" value="${sessionScope.usuario.usuario}">
     </body>
 </html>

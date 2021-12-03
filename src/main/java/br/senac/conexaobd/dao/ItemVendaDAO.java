@@ -11,7 +11,7 @@ public class ItemVendaDAO {
 
     public static void inserirItemVenda(ItemVenda itemVenda) throws SQLException {
 
-        String query = "insert into itemVenda(qtd,precoUnitario,subTotal,fk_codProduto,fk_codVenda) "
+        String query = "insert into itemVenda(qtd,precoUnitario,subTotal,Produto,fk_codVenda) "
                 + "values (?,?,?,?,?)";
         Connection con = Conexao.getConexao();
         PreparedStatement ps;
@@ -19,7 +19,7 @@ public class ItemVendaDAO {
         ps.setInt(1, itemVenda.getQtd());
         ps.setDouble(2, itemVenda.getPrecoUnitario());
         ps.setDouble(3, itemVenda.getSubTotal());
-        ps.setInt(4, itemVenda.getFkCodProduto());
+        ps.setString(4, itemVenda.getProduto());
         ps.setInt(5, itemVenda.getFkCodVenda());
         ps.execute();
 
