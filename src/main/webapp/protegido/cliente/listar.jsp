@@ -33,7 +33,7 @@
             }           
         </script>
     </head>
-    <body class="container" style="background-image: url(../../img/tenis.jpeg);">
+    <body class="container" style="background-image: url(../../img/tenis.jpeg); color: white">
         
       
         <c:import url="../uteis/header.jsp"/>

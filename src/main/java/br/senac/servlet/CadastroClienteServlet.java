@@ -23,7 +23,7 @@ public class CadastroClienteServlet extends HttpServlet {
         String endereco = request.getParameter("endCliente");
         int ederecoNumero = Integer.parseInt( request.getParameter("nEndCliente"));
         String complemento = request.getParameter("compCliente"); 
-        String sexo = "";
+       String sexo;
 
         if (request.getParameter("sexo").equals("masculino")) {
             sexo = "M";

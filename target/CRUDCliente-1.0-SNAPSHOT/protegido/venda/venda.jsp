@@ -110,6 +110,7 @@
             }
             .itemVenda{
                 display: block;
+                color:white;
             }
         </style>
         

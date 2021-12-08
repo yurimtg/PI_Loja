@@ -19,8 +19,23 @@
     <style>
 
         .barraMenu{
-            background-color :#93e2d6
+            background-color :#93e2d6;
+               
         }
+        
+    .container{
+               
+               background-image: url(${pageContext.request.contextPath}/img/tenis.jpeg);
+               background-size: cover;
+               background-repeat: no-repeat;
+               background-size: cover;
+               width: 100vw;
+               height: 100vh;
+               padding: 0;
+               text-align: center;
+               color: white ${pageContext.request.contextPath};
+            }
+
 
         .container{
             background-image: url(${pageContext.request.contextPath}/img/tenis.jpeg);
@@ -31,6 +46,7 @@
             height: 100vh;
             padding: 0;
             text-align: center;
+
 
         }
 

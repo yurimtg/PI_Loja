@@ -24,7 +24,7 @@ public class CadastroFuncionarioServlet extends HttpServlet {
         String telefone = request.getParameter("telefoneFuncionario");
         Double salario = Double.parseDouble(request.getParameter("salarioFuncionario"));
         String cargo =  request.getParameter("cargoFuncionario");
-        String sexo = "";
+        String sexo = " ";
 
         if (request.getParameter("sexo").equals("masculino")) {
             sexo = "M";

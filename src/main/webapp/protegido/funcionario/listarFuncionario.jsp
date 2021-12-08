@@ -33,6 +33,11 @@
 
         </script>
     </head>
+    <style>
+        .container{
+          
+        }
+    </style>
     <body class="container">
         <c:import url="../uteis/header.jsp"/>
 
