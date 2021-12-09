@@ -22,7 +22,7 @@ public class CadastroFuncionarioServlet extends HttpServlet {
         String email = request.getParameter("emailFuncionario");
         String cpf = request.getParameter("cpfFuncionario");
         String telefone = request.getParameter("telefoneFuncionario");
-        Double salario = Double.parseDouble(request.getParameter("salarioFuncionario"));
+        String salario = request.getParameter("salarioFuncionario");
         String cargo =  request.getParameter("cargoFuncionario");
         String sexo = " ";
 
@@ -40,7 +40,7 @@ public class CadastroFuncionarioServlet extends HttpServlet {
         funcionario.setEmail(email);
         funcionario.setSexo(sexo);
         funcionario.setTelefone(telefone);
-        funcionario.setSalario(salario);
+        funcionario.setSalario(Double.parseDouble(salario));
         funcionario.setCargo(cargo);
 
         try {

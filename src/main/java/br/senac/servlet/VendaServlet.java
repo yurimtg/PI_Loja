@@ -3,6 +3,7 @@ package br.senac.servlet;
 import br.senac.conexaobd.dao.ClienteDAO;
 import br.senac.conexaobd.dao.ItemVendaDAO;
 import br.senac.conexaobd.dao.VendaDAO;
+import br.senac.conexaobd.dao.produtoDAO;
 import br.senac.conexaobd.entidades.Cliente;
 import br.senac.conexaobd.entidades.ItemVenda;
 import br.senac.conexaobd.entidades.Venda;
@@ -58,6 +59,7 @@ public class VendaServlet extends HttpServlet {
                 item.setQtd(Integer.parseInt(vQtd[i]));
                 item.setSubTotal(Double.parseDouble(vValor[i]) * Integer.parseInt(vQtd[i]));
                 ItemVendaDAO.inserirItemVenda(item);
+                produtoDAO.atualizarEstoque(Integer.parseInt(vCod[i]),Integer.parseInt(vQtd[i]));
             }
 
             resp.sendRedirect(req.getContextPath() + "/protegido/venda/venda.jsp");

@@ -15,8 +15,7 @@ public class CadastroProdutoServlet extends HttpServlet {
             throws ServletException, IOException {
         
       String ope = request.getParameter("ope");
-        
-        // Passo 1 - Recuperar os parametros
+
         String marca = request.getParameter("marcaProduto");
         String modelo = request.getParameter("modeloProduto");
         Double valor = Double.parseDouble(request.getParameter("valorProduto"));
@@ -24,7 +23,10 @@ public class CadastroProdutoServlet extends HttpServlet {
         int tamanho = Integer.parseInt(request.getParameter("tamanhoProduto"));
         String filial = request.getParameter("filial");
         int cod = 0;
-        if(request.getParameter("codProduto") != null){cod = Integer.parseInt(request.getParameter("codProduto"));}
+        
+        if(request.getParameter("codProduto") != null){
+            cod = Integer.parseInt(request.getParameter("codProduto"));
+        }
        
         String genero;
 

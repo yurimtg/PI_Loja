@@ -62,7 +62,7 @@
                  
                
                 <label >Salario:</label>
-                <input type="text" name="salarioFuncionário" class="form-control" style="width: 40%; float: left; margin-right: 2%;" value="${funcionarioAtualizacao.salario}"/>
+                <input type="text" name="salarioFuncionario" class="form-control" style="width: 40%; float: left; margin-right: 2%;" value="${funcionarioAtualizacao.salario}"/>
 
                  <label>Filial</label>
                   <select name="filial" id="filial" style="width: 30%; float: left; margin-right: 2%;">

@@ -13,46 +13,6 @@ import java.util.logging.Logger;
 
 public class produtoDAO {
 
-    public static List<Produto> getProdutoPorModelo(String modelo) {
-        List<Produto> produtos = new ArrayList<>();
-        Produto produto = null;
-        String query = "select * from produto where modelo like ?";
-
-        Connection con = Conexao.getConexao();
-        try {
-            PreparedStatement ps = con.prepareStatement(query);
-            ps.setString(1, modelo);
-            ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
-
-                produto = new Produto();
-
-                String marca = rs.getString("marca");
-                int cod = rs.getInt("codProduto");
-                Double valor = rs.getDouble("valor");
-                int estoque = rs.getInt("estoque");
-                int tamanho = rs.getInt("tamanho");
-                String genero = rs.getString("genero");
-                String filial = rs.getNString("filial");
-
-                produto.setMarca(marca);
-                produto.setModelo(modelo);
-                produto.setValor(valor);
-                produto.setEstoque(estoque);
-                produto.setTamanho(tamanho);
-                produto.setCodProduto(cod);
-                produto.setGenero(genero);
-                produto.setFilial(filial);
-
-                produtos.add(produto);
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(produtoDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return produtos;
-
-    }
-
     public static void inserirProduto(Produto produto) throws SQLException {
         boolean ok = true;
         String query = "insert into produto(marca,modelo,estoque,tamanho,valor,genero,filial)"
@@ -60,7 +20,7 @@ public class produtoDAO {
         Connection con = Conexao.getConexao();
         PreparedStatement ps;
         ps = con.prepareStatement(query);
-
+        
         ps.setString(1, produto.getMarca());
         ps.setString(2, produto.getModelo());
         ps.setInt(3, produto.getEstoque());
@@ -68,11 +28,10 @@ public class produtoDAO {
         ps.setDouble(5, produto.getValor());
         ps.setString(6, produto.getGenero());
         ps.setString(7, produto.getFilial());
-
+        
         ps.execute();
-
+        
     }
-
     public static Produto getProdutoPorCod(int cod) {
         Produto produto = null;
         String query = "select * from produto where codProduto=?";
@@ -92,7 +51,7 @@ public class produtoDAO {
                 int estoque = rs.getInt("estoque");
                 int tamanho = rs.getInt("tamanho");
                 String genero = rs.getString("genero");
-                String filial = rs.getNString("filial");
+
 
                 produto.setMarca(marca);
                 produto.setModelo(modelo);
@@ -101,7 +60,7 @@ public class produtoDAO {
                 produto.setTamanho(tamanho);
                 produto.setCodProduto(cod);
                 produto.setGenero(genero);
-                produto.setFilial(filial);
+
 
             }
         } catch (SQLException ex) {
@@ -147,44 +106,44 @@ public class produtoDAO {
             ok = false;
         }
         return ok;
-    }
-
-    public static List<Produto> getProduto() {
-        List<Produto> produtos = new ArrayList();
-        String query = "select * from produto";
-
-        Connection con = Conexao.getConexao();
-        try {
-            PreparedStatement ps = con.prepareStatement(query);
-            ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
-                Produto produto = new Produto();
-                String marca = rs.getString("marca");
-                String modelo = rs.getString("modelo");
-                Double valor = rs.getDouble("valor");
-                int estoque = rs.getInt("estoque");
-                int tamanho = rs.getInt("tamanho");
-                int cod = rs.getInt("codProduto");
-                String genero = rs.getString("genero");
-                String filial = rs.getString("filial");
-
-                produto.setMarca(marca);
-                produto.setModelo(modelo);
-                produto.setValor(valor);
-                produto.setEstoque(estoque);
-                produto.setTamanho(tamanho);
-                produto.setCodProduto(cod);
-                produto.setGenero(genero);
-                produto.setFilial(filial);
-
-                produtos.add(produto);
+    } 
+    
+        public static List<Produto>getProduto(){
+            List<Produto> produtos = new ArrayList();
+            String query = "select * from produto";
+            
+            Connection con = Conexao.getConexao();
+            try {
+                PreparedStatement ps = con.prepareStatement(query);
+                ResultSet rs = ps.executeQuery();
+                while (rs.next()) {
+                    Produto produto = new Produto();
+                    String marca = rs.getString("marca");
+                    String modelo = rs.getString("modelo");
+                    Double valor = rs.getDouble("valor");
+                    int estoque = rs.getInt("estoque");
+                    int tamanho = rs.getInt("tamanho");
+                    int cod = rs.getInt("codProduto");
+                    String genero = rs.getString("genero");
+                    String filial = rs.getString("filial");
+                    
+                    produto.setMarca(marca);
+                    produto.setModelo(modelo);
+                    produto.setValor(valor);
+                    produto.setEstoque(estoque);
+                    produto.setTamanho(tamanho);
+                    produto.setCodProduto(cod);
+                    produto.setGenero(genero);
+                    produto.setFilial(filial);
+                    
+                    produtos.add(produto);
+                }
+            } catch (SQLException ex) {
             }
-        } catch (SQLException ex) {
+            return produtos;
         }
-        return produtos;
-    }
-
-    public static boolean atualizarEstoque(int cod, int quantidade) {
+        
+        public static boolean atualizarEstoque(int cod, int quantidade) {
         boolean ok = true;
         String query = "UPDATE PRODUTO SET ESTOQUE = ESTOQUE - ? WHERE CODPRODUTO = ?";
         Connection con = Conexao.getConexao();
@@ -199,5 +158,45 @@ public class produtoDAO {
         }
         return ok;
     }
+        
+        public static List <Produto> getProdutoPorModelo(String modelo) {
+        List <Produto> produtos = new ArrayList<>();
+        Produto produto = null;
+        String query = "select * from produto where modelo like ?";
 
+        Connection con = Conexao.getConexao();
+        try {
+            PreparedStatement ps = con.prepareStatement(query);
+            ps.setString(1, modelo);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+
+                produto = new Produto();
+
+                String marca = rs.getString("marca");
+                int cod = rs.getInt("codProduto");
+                Double valor = rs.getDouble("valor");
+                int estoque = rs.getInt("estoque");
+                int tamanho = rs.getInt("tamanho");
+                String genero = rs.getString("genero");
+                String filial = rs.getNString("filial");
+
+                produto.setMarca(marca);
+                produto.setModelo(modelo);
+                produto.setValor(valor);
+                produto.setEstoque(estoque);
+                produto.setTamanho(tamanho);
+                produto.setCodProduto(cod);
+                produto.setGenero(genero);
+                produto.setFilial(filial);
+                
+                produtos.add(produto);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(produtoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return produtos;
+
+    }
+        
 }

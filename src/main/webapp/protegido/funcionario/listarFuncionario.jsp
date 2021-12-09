@@ -61,7 +61,7 @@
                             <td>${funcionario.salario}</td>
                             <td>${funcionario.cargo}</td>
                             <td>${funcionario.filial }</td>
-                            <td><a class="btn btn-link" href="CadastroFuncionarioServlet?cpfUsuario=${funcionario.cpf}&ope=1">Atualizar </a></td>
+                            <td><a class="btn btn-link" href="CargoServlet?cpfUsuario=${funcionario.cpf}&ope=1">Atualizar </a></td>
                             <td><button onclick="confirmarRemocao('${funcionario.nome}', '${funcionario.cpf}')" class="btn btn-link">Deletar</button></td>
                         </tr>
                     </c:forEach>

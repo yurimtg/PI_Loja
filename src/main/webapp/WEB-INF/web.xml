@@ -64,6 +64,7 @@
     <servlet-mapping>
         <servlet-name>CadastroFuncionarioServlet</servlet-name>
         <url-pattern>/funcionario/CadastroFuncionarioServlet</url-pattern>
+         <url-pattern>/CadastroFuncionarioServlet</url-pattern>
         <url-pattern>/protegido/funcionario/CadastroFuncionarioServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
@@ -98,6 +99,7 @@
         <servlet-name>CargoServlet</servlet-name>
         <url-pattern>/CargoServlet</url-pattern>
         <url-pattern>/protegido/CargoServlet</url-pattern>
+        <url-pattern>/funcionario/CargoServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>CarrinhoServlet</servlet-name>

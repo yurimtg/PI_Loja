@@ -2,7 +2,6 @@ package br.senac.servlet;
 
 import br.senac.conexaobd.dao.ItemVendaDAO;
 import br.senac.conexaobd.dao.VendaDAO;
-import br.senac.conexaobd.dao.produtoDAO;
 import br.senac.conexaobd.entidades.ItemVenda;
 import br.senac.conexaobd.entidades.Venda;
 import java.io.IOException;
